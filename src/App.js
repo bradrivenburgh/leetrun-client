@@ -6,7 +6,9 @@ function App() {
     <main className='App'>
       <BoundaryError>
         <Switch>
-          
+          <Route path="/">
+
+          </Route>
         </Switch>
       </BoundaryError>
     </main>

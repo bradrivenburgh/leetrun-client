@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import LandingPage from './LandingPage';
 
 describe('App', () => {
   test('renders to the DOM', () => {
-    render(<BrowserRouter><App /></BrowserRouter>);
+    render(<BrowserRouter><LandingPage /></BrowserRouter>);
   });
 })

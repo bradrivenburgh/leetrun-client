@@ -1,32 +1,98 @@
-import React from "react";
-import './CreateAccount.css';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import "./CreateAccount.css";
 
 function CreateAccount() {
+  const [formData, setFormData] = useState({
+    first: "",
+    last: "",
+    email: "",
+    password: "",
+    verify_password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  let history = useHistory();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push("/");
+  };
+
+  const allFormValuesPresent = () => {
+    const areEmptyInputs = Object.values(formData).some(
+      (value) => value.trim().length === 0
+    );
+    return areEmptyInputs;
+  };
+
   return (
     <>
       <header>
         <h1>Create an account</h1>
       </header>
-      <section className="create-account">
-        <form action='#' className='create-account__form'>
-          <label htmlFor='first-name'>First Name:</label>
-          <input type='text' id='first-name' name='first-name' />
+      <section className='create-account'>
+        <form
+          action='#'
+          className='create-account__form'
+          onSubmit={(e) => handleSubmit(e)}>
+          <label htmlFor='first'>First Name:</label>
+          <input
+            type='text'
+            id='first'
+            name='first'
+            value={formData.first}
+            onChange={(e) => handleChange(e)}
+          />
 
-          <label htmlFor='last-name'>Last Name:</label>
-          <input type='text' id='last-name' name='last-name' />
+          <label htmlFor='last'>Last Name:</label>
+          <input
+            type='text'
+            id='last'
+            name='last'
+            value={formData.last}
+            onChange={(e) => handleChange(e)}
+          />
 
           <label htmlFor='email'>Email:</label>
-          <input type='email' id='email' name='email' />
+          <input
+            type='email'
+            id='email'
+            name='email'
+            value={formData.email}
+            onChange={(e) => handleChange(e)}
+          />
 
           <label htmlFor='password'>Password:</label>
-          <input type='password' id='password' name='password' />
+          <input
+            type='password'
+            id='password'
+            name='password'
+            value={formData.password}
+            onChange={(e) => handleChange(e)}
+          />
 
-          <label htmlFor='verify-password'>Repeat Password:</label>
-          <input type='password' id='verify-password' name='verify-password' />
+          <label htmlFor='verify_password'>Repeat Password:</label>
+          <input
+            type='password'
+            id='verify_password'
+            name='verify_password'
+            value={formData.verify_password}
+            onChange={(e) => handleChange(e)}
+          />
 
           <div className='create-account__buttons'>
-            <button>Cancel</button>
-            <button>Submit</button>
+            <button type='button' onClick={() => history.goBack()}>
+              Cancel
+            </button>
+            <button
+              disabled={allFormValuesPresent()}
+              aria-disabled={allFormValuesPresent()}>
+              Submit
+            </button>
           </div>
         </form>
       </section>

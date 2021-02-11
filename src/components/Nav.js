@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import './Nav.css'
 
 function Nav() {
   return (
     <nav role='navigation'>
       <div className='nav-logo'>
-        <a href='index.html'>LeetRun</a>
+        <Link to="/">LeetRun</Link>
       </div>
       <ul>
         <li>
-          <a href='create-account.html'>Create account</a>
+          <Link to="create-account">Create account</Link>
         </li>
         <li>
           <a href='login.html'>Login / Logout</a>

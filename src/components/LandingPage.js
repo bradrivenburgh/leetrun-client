@@ -67,7 +67,7 @@ function LandingPage() {
         <h2>Start your running journey now</h2>
         <button>View Demo</button>
       </section>
-      <footer role='content-info'>
+      <footer>
         <p>Created by Brad Rivenburgh</p>
         <p>
           <a href='https://www.linkedin.com/in/brad-rivenburgh/'>LinkedIn</a> |{" "}

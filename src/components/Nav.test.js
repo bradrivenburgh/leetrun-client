@@ -1,12 +1,12 @@
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import LandingPage from "./LandingPage";
+import Nav from "./Nav";
 
-describe("LandingPage", () => {
+describe("Nav", () => {
   test("renders to the DOM", () => {
     render(
       <BrowserRouter>
-        <LandingPage />
+        <Nav />
       </BrowserRouter>
     );
   });

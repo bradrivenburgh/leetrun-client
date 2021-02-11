@@ -22,7 +22,7 @@ function Nav() {
           <a href='leaderboard.html'>Leaderboards</a>
         </li>
         <li>
-          <a href='record-run.html'>Record run</a>
+          <Link to="record-run">Record run</Link>
         </li>
       </ul>
     </nav>

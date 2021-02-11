@@ -5,12 +5,17 @@ import Nav from "./components/Nav";
 import LandingPage from "./components/LandingPage";
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
+import RecordRun from './components/RecordRun';
 
 function App() {
   return (
     <main className='App'>
       <BoundaryError>
         <Switch>
+          <Route path="/record-run">
+            <Nav />
+            <RecordRun />
+          </Route>
           <Route path="/login">
             <Nav />
             <Login />

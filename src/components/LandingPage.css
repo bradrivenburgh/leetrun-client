@@ -1,0 +1,29 @@
+/* Landing page images */
+
+@media screen and (max-width: 599px) {
+  img {
+    max-width: 250px;
+    display: block;
+    margin: 0 auto;
+  }  
+}
+
+.landing {
+  margin: 0 1em;
+}
+
+.landing h1, h2 {
+  text-align: center;
+}
+
+.landing button {
+  display: block;
+  margin: 0 auto;
+}
+
+footer {
+  margin-top: 1em;
+  text-align: center;
+  padding: 1% 0;
+  background-color: #aaa;
+}

@@ -1,0 +1,41 @@
+nav {
+  padding: 1% 0;
+  background-color: #aaa;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul {
+  display: flex;
+  padding-inline-start: 0;
+  flex-flow: row wrap;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0 0 0 .5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #444;
+}
+
+nav ul a:hover {
+  color: #fff
+}
+
+.active {
+  color:#fff;
+}
+
+nav li {
+  padding-right: 1em;
+}
+
+.nav-logo {
+  margin-left: 1em;
+  align-self: center;
+  font-weight: 700;
+}

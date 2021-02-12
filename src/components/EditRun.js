@@ -18,8 +18,10 @@ function EditRun({ props: currentRun }) {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, type, value, checked } = e.target;
+    type === 'checkbox'
+      ? setFormData({ ...formData, [name]: checked })
+      : setFormData({ ...formData, [name]: value });
   };
 
   let history = useHistory();
@@ -38,6 +40,15 @@ function EditRun({ props: currentRun }) {
     return areEmptyInputs;
   };
 
+  const getPresentDate = () => {
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    return today;
+  }
+
   return (
     <>
       <header role='banner'>
@@ -54,6 +65,8 @@ function EditRun({ props: currentRun }) {
             type='date'
             id='date'
             name='date'
+            min="1950-01-01"
+            max={getPresentDate()}
             value={formData.date}
             onChange={(e) => handleChange(e)}
           />
@@ -182,8 +195,7 @@ function EditRun({ props: currentRun }) {
               type='checkbox'
               id='public'
               name='public'
-              value={true}
-              checked={formData.public === true}
+              checked={formData.public}
               onChange={(e) => handleChange(e)}
             />
             <label htmlFor='public'>Make public?</label>

@@ -18,8 +18,10 @@ function RecordRun() {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, type, value, checked } = e.target;
+    type === 'checkbox'
+      ? setFormData({ ...formData, [name]: checked })
+      : setFormData({ ...formData, [name]: value });
   };
 
   let history = useHistory();
@@ -191,7 +193,7 @@ function RecordRun() {
               type='checkbox'
               id='public'
               name='public'
-              value={true}
+              checked={formData.public}
               onChange={(e) => handleChange(e)}
             />
             <label htmlFor='public'>Make public?</label>

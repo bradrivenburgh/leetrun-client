@@ -15,14 +15,18 @@ function SummaryEntry() {
         <header onClick={handleClick}>
           <h3>Philadelphia, PA</h3>
           <h3>01/01/2021</h3>
-        </header>
-        <div className={expand ? "collapse expand" : "collapse"}>
+          <div className="snapshot">
           <p>
             <strong>Distance:</strong> 5k
           </p>
           <p>
             <strong>Time:</strong> 21:00
           </p>
+
+          </div>
+
+        </header>
+        <div className={expand ? "collapse expand" : "collapse"}>
           <p>
             <strong>Weather:</strong> Clear
           </p>

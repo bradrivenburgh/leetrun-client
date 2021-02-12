@@ -49,6 +49,23 @@ function SummaryEntry({props: run}) {
   );
 }
 
+SummaryEntry.defaultProps = {
+  props: {
+    run: {
+      date: "01/02/2021",
+      location: "Philadelphia, PA",
+      distance: "5",
+      hours: "00",
+      minutes: "20",
+      seconds: "30",
+      weather: "clear",
+      surface: "pavement",
+      terrain: "mixed",
+      notes: "Good training run!",
+      public: false,
+    },
+  }
 
+}
 
 export default SummaryEntry;

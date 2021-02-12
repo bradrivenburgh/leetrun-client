@@ -2,7 +2,7 @@ import React from "react";
 import SummaryEntry from './SummaryEntry';
 import "./Summary.css";
 
-function Summary({props: runEntries}) {
+function Summary({props: {runEntries, prs} }) {
 
   const loggedRuns = runEntries.map((run, key) => {
     return (
@@ -45,13 +45,13 @@ function Summary({props: runEntries}) {
         <div className="summary-stats__pr">
           <h3>Personal Records</h3>
           <ul>
-            <li><strong>5k:</strong> 19:00</li>
-            <li><strong>10k:</strong> 47:00</li>
-            <li><strong>15k:</strong> --:--</li>
-            <li><strong>25k:</strong> --:--:--</li>
-            <li><strong>30k:</strong> --:--:--</li>
-            <li><strong>half-marathon:</strong> --:--:--</li>
-            <li><strong>marathon:</strong> --:--:--</li>
+            <li><strong>5k:</strong> {prs["5k"]}</li>
+            <li><strong>10k:</strong> {prs["10k"]}</li>
+            <li><strong>15k:</strong> {prs["15k"]}</li>
+            <li><strong>25k:</strong> {prs["25k"]}</li>
+            <li><strong>30k:</strong> {prs["30k"]}</li>
+            <li><strong>half-marathon:</strong> {prs["half-marathon"]}</li>
+            <li><strong>marathon:</strong> {prs["marathon"]}</li>
           </ul>
         </div>
       </section>
@@ -83,7 +83,18 @@ function Summary({props: runEntries}) {
 }
 
 Summary.defaultProps = {
-  runEntries: [],
+  props: {
+    runEntries: [],
+    prs: {
+      "5k": "00:19:30",
+      "10k": "00:49:00",
+      "15k": "00:55:30",
+      "25k": "01:40:30",
+      "30k": "02:19:30",
+      "half-marathon": "01:49:30",
+      "marathon": "03:40:30",
+    }
+  }
 }
 
 export default Summary;

@@ -7,7 +7,7 @@ import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import RecordRun from './components/RecordRun';
 import Summary from './components/Summary';
-import { runEntries } from './data';
+import { runEntries, prs } from './data';
 
 function App() {
   /* API call for user data */
@@ -19,7 +19,7 @@ function App() {
         <Switch>
           <Route path="/summary">
             <Nav />
-            <Summary props={runEntries}/>
+            <Summary props={{runEntries, prs}}/>
           </Route>
           <Route path="/record-run">
             <Nav />

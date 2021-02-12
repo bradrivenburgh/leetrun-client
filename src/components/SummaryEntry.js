@@ -22,8 +22,8 @@ function SummaryEntry({props: run}) {
           </p>
 
           </div>
-
         </header>
+
         <div className={expand ? "collapse expand" : "collapse"}>
           <p>
             <strong>Weather:</strong> {run.weather}
@@ -36,6 +36,9 @@ function SummaryEntry({props: run}) {
           </p>
           <p>
             <strong>Notes: </strong> {run.notes}
+          </p>
+          <p>
+          <strong>Public: </strong> {run.public ? "yes" : "no"}
           </p>
         </div>
         <div className='summary-entries__buttons'>

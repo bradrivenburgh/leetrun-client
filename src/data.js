@@ -1,6 +1,6 @@
 export const runEntries = [
   {
-    date: "01/02/2021",
+    date: "2021-02-01",
     location: "Philadelphia, PA",
     distance: "5",
     hours: "00",
@@ -13,7 +13,7 @@ export const runEntries = [
     public: false,
   },
   {
-    date: "01/01/2021",
+    date: "2021-01-02",
     location: "Haddonfield, NJ",
     distance: "5",
     hours: "00",
@@ -26,7 +26,7 @@ export const runEntries = [
     public: false,
   },
   {
-    date: "12/25/2020",
+    date: "2020-12-25",
     location: "Philadelphia, PA",
     distance: "5",
     hours: "00",
@@ -36,7 +36,7 @@ export const runEntries = [
     surface: "pavement",
     terrain: "mixed",
     notes: "Christmas! Nothing better than a run to celebrate.",
-    public: false,
+    public: true,
   },
 ];
 

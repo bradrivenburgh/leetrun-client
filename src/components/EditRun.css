@@ -1,0 +1,57 @@
+/* Record run form */
+
+.record-run {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 2em
+}
+
+.record-run__form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.record-run input {
+  width: 150px;
+  padding-top: .5em;
+  margin-top: .25em;
+}
+
+.record-run label {
+  margin-top: .5em;
+}
+
+.record-run__buttons {
+  display: flex;
+}
+
+.record-run__buttons button {
+  margin-top: 2em;
+  margin-right: 1em;
+}
+
+.record-run__time {
+  display: block;
+}
+
+.record-run__time input {
+  width: 4.5em;
+}
+
+.record-run__weather {
+  display: block;
+  text-align: left;
+}
+.record-run__weather input {
+  width:2em;
+}
+
+.record-run__share {
+  display: block;
+  text-align: left;
+}
+
+.record-run__share input {
+  width: 2em;
+}

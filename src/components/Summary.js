@@ -2,12 +2,12 @@ import React from "react";
 import SummaryEntry from './SummaryEntry';
 import "./Summary.css";
 
-function Summary({props: {runEntries, prs} }) {
+function Summary({props: {runEntries, prs, setCurrentRun} }) {
 
   const loggedRuns = runEntries.map((run, key) => {
     return (
       <section key={key}>
-        <SummaryEntry props={run} />
+        <SummaryEntry props={{run, setCurrentRun}} />
       </section>
     );
   })

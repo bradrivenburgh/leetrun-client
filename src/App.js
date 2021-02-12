@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import BoundaryError from "./components/BoundaryError";
 import Nav from "./components/Nav";
@@ -7,19 +7,27 @@ import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import RecordRun from './components/RecordRun';
 import Summary from './components/Summary';
+import EditRun from './components/EditRun';
 import { runEntries, prs } from './data';
 
 function App() {
-  /* API call for user data */
+  /* State */
+  const [currentRun, setCurrentRun] = useState({})
+
+  /* handler for API call  */
 
 
   return (
     <main className='App'>
       <BoundaryError>
         <Switch>
+          <Route path="/edit-run">
+            <Nav />
+            <EditRun props={currentRun} />
+          </Route>
           <Route path="/summary">
             <Nav />
-            <Summary props={{runEntries, prs}}/>
+            <Summary props={{runEntries, prs, setCurrentRun}}/>
           </Route>
           <Route path="/record-run">
             <Nav />

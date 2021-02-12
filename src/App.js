@@ -6,12 +6,17 @@ import LandingPage from "./components/LandingPage";
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import RecordRun from './components/RecordRun';
+import Summary from './components/Summary';
 
 function App() {
   return (
     <main className='App'>
       <BoundaryError>
         <Switch>
+          <Route path="/summary">
+            <Nav />
+            <Summary />
+          </Route>
           <Route path="/record-run">
             <Nav />
             <RecordRun />

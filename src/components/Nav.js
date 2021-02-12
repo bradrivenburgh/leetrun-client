@@ -16,7 +16,7 @@ function Nav() {
           <Link to="login">Login / Logout</Link>
         </li>
         <li>
-          <a href='summary.html'>Summary</a>
+          <Link to="summary">Summary</Link>
         </li>
         <li>
           <a href='leaderboard.html'>Leaderboards</a>

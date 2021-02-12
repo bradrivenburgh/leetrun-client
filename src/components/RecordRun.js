@@ -25,8 +25,7 @@ function RecordRun() {
   let history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    //history.push("/");
+    history.push("/");
   };
 
   const allFormValuesPresent = () => {
@@ -39,6 +38,15 @@ function RecordRun() {
     );
     return areEmptyInputs;
   };
+
+  const getPresentDate = () => {
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    return today;
+  }
 
   return (
     <>
@@ -56,6 +64,8 @@ function RecordRun() {
             type='date'
             id='date'
             name='date'
+            min="1950-01-01"
+            max={getPresentDate()}
             value={formData.date}
             onChange={(e) => handleChange(e)}
           />

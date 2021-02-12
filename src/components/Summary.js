@@ -1,7 +1,9 @@
 import React from "react";
+import SummaryEntry from './SummaryEntry';
 import "./Summary.css";
 
 function Summary() {
+
   return (
     <>
       <header role='banner'>
@@ -65,130 +67,8 @@ function Summary() {
           </select>
         </div>
 
-        <section>
-          <header>
-            <h3>Philadelphia, PA</h3>
-            <h3>01/01/2021</h3>
-          </header>
+        <SummaryEntry />
 
-          <p>
-            <strong>Distance:</strong> 5k
-          </p>
-          <p>
-            <strong>Time:</strong> 21:00
-          </p>
-          <p>
-            <strong>Weather:</strong> Clear
-          </p>
-          <p>
-            <strong>Surface:</strong> Pavement
-          </p>
-          <p>
-            <strong>Terrain:</strong> Flat
-          </p>
-          <p>
-            <strong>Notes:</strong>
-            Training run. Felt sluggish at the start, but my stride opened up
-            about 5 minutes in.
-          </p>
-          <div className="summary-entries__buttons">
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </section>
-
-        <section>
-          <header>
-            <h3>Cinnaminson, NJ</h3>
-            <h3>12/31/2020</h3>
-          </header>
-          <p>
-            <strong>Distance:</strong> 5k
-          </p>
-          <p>
-            <strong>Time:</strong> 21:00
-          </p>
-          <p>
-            <strong>Weather:</strong> Clear
-          </p>
-          <p>
-            <strong>Surface:</strong> Pavement
-          </p>
-          <p>
-            <strong>Terrain:</strong> Flat
-          </p>
-          <p>
-            <strong>Notes:</strong>
-            Training run. Felt sluggish at the start, but my stride opened up
-            about 5 minutes in.
-          </p>
-          <div className="summary-entries__buttons">
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </section>
-
-        <section>
-          <header>
-            <h3>HaddonField, NJ</h3>
-            <h3>12/26/2020</h3>
-          </header>
-          <p>
-            <strong>Distance:</strong> 5k
-          </p>
-          <p>
-            <strong>Time:</strong> 21:00
-          </p>
-          <p>
-            <strong>Weather:</strong> Clear
-          </p>
-          <p>
-            <strong>Surface:</strong> Pavement
-          </p>
-          <p>
-            <strong>Terrain:</strong> Flat
-          </p>
-          <p>
-            <strong>Notes:</strong>
-            Training run. Felt sluggish at the start, but my stride opened up
-            about 5 minutes in.
-          </p>
-          <div className="summary-entries__buttons">
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </section>
-
-        <section>
-          <header>
-            <h3>Cinnaminson, NJ</h3>
-            <h3>12/31/2020</h3>
-          </header>
-          <p>
-            <strong>Distance:</strong> 5k
-          </p>
-          <p>
-            <strong>Time:</strong> 21:00
-          </p>
-          <p>
-            <strong>Weather:</strong> Clear
-          </p>
-          <p>
-            <strong>Surface:</strong> Pavement
-          </p>
-          <p>
-            <strong>Terrain:</strong> Flat
-          </p>
-          <p>
-            <strong>Notes:</strong>
-            Training run. Felt sluggish at the start, but my stride opened up
-            about 5 minutes in.
-          </p>
-          <div className="summary-entries__buttons">
-            <button>Edit</button>
-            <button>Delete</button>
-          </div>
-        </section>
       </section>
     </>
   );

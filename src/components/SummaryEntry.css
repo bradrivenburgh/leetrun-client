@@ -1,0 +1,34 @@
+.summary-entries header {
+  padding: .5em;
+  margin: 0;
+}
+
+.summary-entries section {
+  background-color: rgb(230, 230, 230);
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 5px;
+}
+
+.summary-entries__buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.summary-entries__buttons button {
+  margin-top: .5em;
+  margin-right: .5em;
+  text-align: right;
+}
+
+.collapse {
+  max-height: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: all .3s ease;
+}
+
+.expand {
+  max-height: 1000px;
+  visibility: visible;
+}

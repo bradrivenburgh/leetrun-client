@@ -1,6 +1,7 @@
 .summary-entries header {
   padding: .5em;
   margin: 0;
+  cursor: pointer;
 }
 
 .summary-entries section {

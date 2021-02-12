@@ -4,18 +4,6 @@
   margin: 0 1em; 
 }
 
-.summary-entries header {
-  padding: .5em;
-  margin: 0;
-}
-
-.summary-entries section {
-  background-color: rgb(230, 230, 230);
-  margin-top: 1em;
-  padding: 1em;
-  border-radius: 5px;
-}
-
 .summary-entries__controls {
   display: flex;
   flex-direction: column;
@@ -23,17 +11,6 @@
 
 .summary-entries__controls label {
   margin-top: 1em;
-}
-
-.summary-entries__buttons {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.summary-entries__buttons button {
-  margin-top: .5em;
-  margin-right: .5em;
-  text-align: right;
 }
 
 .summary-stats {

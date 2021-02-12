@@ -2,7 +2,15 @@ import React from "react";
 import SummaryEntry from './SummaryEntry';
 import "./Summary.css";
 
-function Summary() {
+function Summary({props: runEntries}) {
+
+  const loggedRuns = runEntries.map((run, key) => {
+    return (
+      <section key={key}>
+        <SummaryEntry props={run} />
+      </section>
+    );
+  })
 
   return (
     <>
@@ -67,11 +75,15 @@ function Summary() {
           </select>
         </div>
 
-        <SummaryEntry />
+        {loggedRuns}
 
       </section>
     </>
   );
+}
+
+Summary.defaultProps = {
+  runEntries: [],
 }
 
 export default Summary;

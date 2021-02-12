@@ -7,15 +7,19 @@ import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import RecordRun from './components/RecordRun';
 import Summary from './components/Summary';
+import { runEntries } from './data';
 
 function App() {
+  /* API call for user data */
+
+
   return (
     <main className='App'>
       <BoundaryError>
         <Switch>
           <Route path="/summary">
             <Nav />
-            <Summary />
+            <Summary props={runEntries}/>
           </Route>
           <Route path="/record-run">
             <Nav />

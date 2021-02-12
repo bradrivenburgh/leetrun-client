@@ -7,20 +7,19 @@ function RecordRun() {
     date: "",
     location: "",
     distance: "",
-    race: "",
     hours: "",
     minutes: "",
     seconds: "",
-    weather: [],
+    weather: "",
     surface: "",
     terrain: "",
     notes: "",
-    share: false,
+    public: false,
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-      setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: value });
   };
 
   let history = useHistory();
@@ -32,7 +31,11 @@ function RecordRun() {
 
   const allFormValuesPresent = () => {
     const areEmptyInputs = Object.values(formData).some(
-      (value) => value.trim().length === 0
+      (value) => {
+       return typeof value === 'string'
+          ? value.trim().length === 0
+          : value.length === 0
+      }
     );
     return areEmptyInputs;
   };
@@ -40,7 +43,7 @@ function RecordRun() {
   return (
     <>
       <header role='banner'>
-        <h1>New run</h1>
+        <h1>Record run</h1>
       </header>
 
       <section className='record-run'>
@@ -72,15 +75,6 @@ function RecordRun() {
             id='distance'
             name='distance'
             value={formData.distance}
-            onChange={(e) => handleChange(e)}
-          />
-
-          <label htmlFor='race'>Race:</label>
-          <input
-            type='text'
-            id='race'
-            name='race'
-            value={formData.race}
             onChange={(e) => handleChange(e)}
           />
 
@@ -120,45 +114,27 @@ function RecordRun() {
           <label>Weather:</label>
           <div className='record-run__weather'>
             <input
-              type='checkbox'
-              id='hot'
-              name='hot'
-              value='hot'
+              type='radio'
+              id='clear'
+              name='weather'
+              value='clear'
               onChange={(e) => handleChange(e)}
             />
-            <label htmlFor='hot'>Hot</label>
+            <label htmlFor='clear'>Clear</label>
             <br />
             <input
-              type='checkbox'
-              id='cold'
-              name='cold'
-              value='cold'
-              onChange={(e) => handleChange(e)}
-            />
-            <label htmlFor='cold'>Cold</label>
-            <br />
-            <input
-              type='checkbox'
-              id='humid'
-              name='humid'
-              value='humid'
-              onChange={(e) => handleChange(e)}
-            />
-            <label htmlFor='humid'>Humid</label>
-            <br />
-            <input
-              type='checkbox'
+              type='radio'
               id='rain'
-              name='rain'
+              name='weather'
               value='rain'
               onChange={(e) => handleChange(e)}
             />
             <label htmlFor='rain'>Rain</label>
             <br />
             <input
-              type='checkbox'
+              type='radio'
               id='snow'
-              name='snow'
+              name='weather'
               value='snow'
               onChange={(e) => handleChange(e)}
             />
@@ -200,25 +176,15 @@ function RecordRun() {
             onChange={(e) => handleChange(e)}
           />
 
-          <label>Share:</label>
           <div className='record-run__share'>
             <input
-              type='radio'
-              id='yes'
-              name='share'
+              type='checkbox'
+              id='public'
+              name='public'
               value={true}
               onChange={(e) => handleChange(e)}
             />
-            <label htmlFor='yes'>Yes</label>
-
-            <input
-              type='radio'
-              id='no'
-              name='share'
-              value={false}
-              onChange={(e) => handleChange(e)}
-            />
-            <label htmlFor='no'>No</label>
+            <label htmlFor='public'>Make public?</label>
           </div>
 
           <div className='record-run__buttons'>
@@ -226,8 +192,8 @@ function RecordRun() {
               Cancel
             </button>
             <button
-              // disabled={allFormValuesPresent()}
-              // aria-disabled={allFormValuesPresent()}
+              disabled={allFormValuesPresent()}
+              aria-disabled={allFormValuesPresent()}
               >
               Submit
             </button>

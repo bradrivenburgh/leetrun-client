@@ -4,15 +4,6 @@
   margin: 0 1em; 
 }
 
-.summary-entries__controls {
-  display: flex;
-  flex-direction: column;
-}
-
-.summary-entries__controls label {
-  margin-top: 1em;
-}
-
 .summary-stats {
   margin: 0 1em; 
 }

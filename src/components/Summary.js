@@ -1,5 +1,6 @@
 import React from "react";
 import SummaryEntry from './SummaryEntry';
+import SummaryFilters from './SummaryFilters';
 import "./Summary.css";
 
 function Summary({props: {allRuns, prs, setAllRuns, setCurrentRun} }) {
@@ -59,20 +60,7 @@ function Summary({props: {allRuns, prs, setAllRuns, setCurrentRun} }) {
       <section className='summary-entries'>
         
         <h2>Runs</h2>
-        
-        <div className='summary-entries__controls'>
-          <label htmlFor='search'>Search: </label>
-          <input name='search' id='search' placeholder='search by location' />
-
-          <label htmlFor='sort'>Sort by: </label>
-          <select name='sort' id='sort'>
-            <option>distance</option>
-            <option>time</option>
-            <option>weather</option>
-            <option>terrain</option>
-            <option>location</option>
-          </select>
-        </div>
+        <SummaryFilters />        
 
         {loggedRuns}
 

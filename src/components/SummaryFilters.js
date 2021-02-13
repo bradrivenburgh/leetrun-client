@@ -3,7 +3,7 @@ import "./SummaryFilters.css";
 
 function SummaryFilters({ props: { handleFilter } }) {
   const [formData, setFormData] = useState({
-    search: "",
+    location: "",
     distance: "",
     weather: "",
     surface: "",
@@ -18,29 +18,34 @@ function SummaryFilters({ props: { handleFilter } }) {
       : setFormData({ ...formData, [name]: value });
   };
 
+  const handleReset = (e) => {
+    const emptyForm = {
+      location: "",
+      distance: "",
+      weather: "",
+      surface: "",
+      terrain: "",
+      public: false,
+    };
+    setFormData(emptyForm);
+    handleFilter(e, emptyForm);
+  };
+
   return (
     <>
       <div className='summary-filters__controls'>
         <form
-          className='summary-filters__search'
-          onSubmit={(e) => handleFilter(e, formData)}
-          // onSubmit={(e) => handleSearch(e, formData.search)}
-          >
-          <label htmlFor='search'>Search: </label>
-          <input
-            name='search'
-            id='search'
-            placeholder='search by location'
-            value={formData.search}
-            onChange={(e) => handleChange(e)}
-          />
-          <button>Search</button>
-        </form>
-
-        <form
           className='summary-filters__filters'
           onSubmit={(e) => handleFilter(e, { ...formData })}>
           <p>Filter by: </p>
+          <label htmlFor='location'>Location: </label>
+          <input
+            name='location'
+            id='location'
+            placeholder='enter a location'
+            value={formData.location}
+            onChange={(e) => handleChange(e)}
+          />
           <label htmlFor='distance'>Distance:</label>
           <select
             name='distance'
@@ -106,6 +111,9 @@ function SummaryFilters({ props: { handleFilter } }) {
             onChange={(e) => handleChange(e)}
           />
           <br />
+          <button type='button' onClick={(e) => handleReset(e)}>
+            Reset
+          </button>
           <button>Filter</button>
         </form>
       </div>

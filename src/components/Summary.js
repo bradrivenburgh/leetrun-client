@@ -19,7 +19,7 @@ function Summary({
     let result = allRunsCopy;
     for (let [key, value] of Object.entries(data)) {
       if ((key === 'public' && value) || value.length > 0) {
-        if (key === 'search') {
+        if (key === 'location') {
           result = result.filter((run) => run.location.includes(value.trim()));
         }
         else {

@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import "./LBoard.css";
 
 function LBoard({ props: board }) {
+  const [expand, setExpand] = useState(false);
+
+  const handleClick = (e) => {
+    if (e.type === "click") {
+      setExpand(!expand);
+    } else {
+      if (e.code === "Enter") {
+        setExpand(!expand);
+      }
+    }
+  };
+
   const formatDate = (date) => {
     const dateArr = date.split("-");
     const newDate = `${dateArr[1]}-${dateArr[2]}-${dateArr[0]}`;
@@ -10,11 +22,14 @@ function LBoard({ props: board }) {
 
   return (
     <>
-      <header>
+      <header
+        onClick={(e) => handleClick(e)}
+        onKeyDown={(e) => handleClick(e)}
+        tabIndex='0'>
         <h2>{board.distance}</h2>
       </header>
 
-      <ol>
+      <ol className={expand ? "collapse expand" : "collapse"}>
         <li>
           <div className='lboard'>
             <h3>{board.competitors.first.name}</h3>

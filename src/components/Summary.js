@@ -57,9 +57,8 @@ function Summary({props: {runEntries, prs, setCurrentRun} }) {
       </section>
 
       <section className='summary-entries'>
-        <header>
-          <h2>Runs</h2>
-        </header>
+        
+        <h2>Runs</h2>
         
         <div className='summary-entries__controls'>
           <label htmlFor='search'>Search: </label>

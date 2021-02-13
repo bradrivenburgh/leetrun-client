@@ -5,19 +5,28 @@ import "./SummaryEntry.css";
 function SummaryEntry({ props: { run, setCurrentRun } }) {
   const [expand, setExpand] = useState(false);
 
-  const handleClick = () => {
-    setExpand(!expand);
+  const handleClick = (e) => {
+    if (e.type === "click") {
+      setExpand(!expand);
+    } else {
+      if (e.code === "Enter") {
+        setExpand(!expand);
+      }
+    }
   };
 
   const formatDate = (date) => {
     const dateArr = date.split("-");
     const newDate = `${dateArr[1]}-${dateArr[2]}-${dateArr[0]}`;
     return newDate;
-  }
+  };
 
   return (
     <>
-      <header onClick={handleClick}>
+      <header
+        onClick={(e) => handleClick(e)}
+        onKeyDown={(e) => handleClick(e)}
+        tabIndex='0'>
         <h3>{run.location}</h3>
         <h3>{formatDate(run.date)}</h3>
         <div className='snapshot'>
@@ -48,9 +57,9 @@ function SummaryEntry({ props: { run, setCurrentRun } }) {
         </p>
       </div>
       <div className='summary-entries__buttons'>
-        <button onClick={() => setCurrentRun(run)}>
-          <Link to='edit-run'>Edit</Link>
-        </button>
+        <Link to='edit-run'>
+          <button onClick={() => setCurrentRun(run)}>Edit</button>
+        </Link>
         <button>Delete</button>
       </div>
     </>

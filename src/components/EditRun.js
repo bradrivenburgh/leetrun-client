@@ -35,11 +35,19 @@ function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
       return current;
     });
     setAllRuns(modified);
-    history.push("/");
+    history.push("/summary");
   };
 
-  const allFormValuesPresent = () => {
-    const areEmptyInputs = Object.values(formData).some((value) => {
+  const requiredValuesPresent = () => {
+    const required = [
+      formData.date,
+      formData.location,
+      formData.hours,
+      formData.minutes,
+      formData.seconds,
+    ];
+
+    const areEmptyInputs = Object.values(required).some((value) => {
       return typeof value === "string"
         ? value.trim().length === 0
         : value.length === 0;
@@ -68,6 +76,8 @@ function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
           className='record-run__form'
           onSubmit={(e) => handleSubmit(e)}>
           <label htmlFor='date'>Date:</label>
+          <p><em>(* = required)</em></p>
+
           <input
             type='date'
             id='date'
@@ -213,8 +223,8 @@ function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
               Cancel
             </button>
             <button
-              disabled={allFormValuesPresent()}
-              aria-disabled={allFormValuesPresent()}>
+              disabled={requiredValuesPresent()}
+              aria-disabled={requiredValuesPresent()}>
               Submit
             </button>
           </div>

@@ -32,11 +32,19 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setAllRuns([...allRuns, formData]);
-    history.push("/");
+    history.push("/summary");
   };
 
-  const allFormValuesPresent = () => {
-    const areEmptyInputs = Object.values(formData).some((value) => {
+  const requiredValuesPresent = () => {
+    const required = [
+      formData.date,
+      formData.location,
+      formData.hours,
+      formData.minutes,
+      formData.seconds,
+    ];
+
+    const areEmptyInputs = Object.values(required).some((value) => {
       return typeof value === "string"
         ? value.trim().length === 0
         : value.length === 0;
@@ -64,7 +72,9 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
           action='#'
           className='record-run__form'
           onSubmit={(e) => handleSubmit(e)}>
-          <label htmlFor='date'>Date:</label>
+          <p><em>(* = required)</em></p>
+
+          <label htmlFor='date'>Date*:</label>
           <input
             type='date'
             id='date'
@@ -75,7 +85,7 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
             onChange={(e) => handleChange(e)}
           />
 
-          <label htmlFor='location'>Location:</label>
+          <label htmlFor='location'>Location*:</label>
           <input
             type='text'
             id='location'
@@ -84,7 +94,7 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
             onChange={(e) => handleChange(e)}
           />
 
-          <label htmlFor='distance'>Distance (kilometers):</label>
+          <label htmlFor='distance'>Distance* (km):</label>
           <input
             type='number'
             id='distance'
@@ -93,7 +103,7 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
             onChange={(e) => handleChange(e)}
           />
 
-          <label>Time:</label>
+          <label>Time*:</label>
           <div className='record-run__time'>
             <input
               type='number'
@@ -207,8 +217,8 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
               Cancel
             </button>
             <button
-              disabled={allFormValuesPresent()}
-              aria-disabled={allFormValuesPresent()}>
+              disabled={requiredValuesPresent()}
+              aria-disabled={requiredValuesPresent()}>
               Submit
             </button>
           </div>

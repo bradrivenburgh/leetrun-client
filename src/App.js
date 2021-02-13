@@ -8,7 +8,8 @@ import Login from './components/Login';
 import RecordRun from './components/RecordRun';
 import Summary from './components/Summary';
 import EditRun from './components/EditRun';
-import { runEntries, prs } from './data';
+import Leaderboards from './components/Leaderboards';
+import { runEntries, prs, leaderboards } from './data';
 
 function App() {
   /* State */
@@ -21,6 +22,10 @@ function App() {
     <main className='App'>
       <BoundaryError>
         <Switch>
+          <Route path="/leaderboards">
+            <Nav />
+            <Leaderboards props={leaderboards} />
+          </Route>
           <Route path="/edit-run">
             <Nav />
             <EditRun props={currentRun} />

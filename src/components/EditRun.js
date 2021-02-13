@@ -27,8 +27,7 @@ function EditRun({ props: currentRun }) {
   let history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    //history.push("/");
+    history.push("/");
   };
 
   const allFormValuesPresent = () => {

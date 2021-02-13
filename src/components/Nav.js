@@ -19,7 +19,7 @@ function Nav() {
           <Link to="summary">Summary</Link>
         </li>
         <li>
-          <a href='leaderboard.html'>Leaderboards</a>
+          <Link to="leaderboards">Leaderboards</Link>
         </li>
         <li>
           <Link to="record-run">Record run</Link>

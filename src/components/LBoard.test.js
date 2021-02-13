@@ -1,12 +1,12 @@
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Leaderboards from "./Leaderboards";
+import LBoard from "./LBoard";
 
-describe("Leaderboards", () => {
+describe("LBoard", () => {
   test("renders to the DOM", () => {
     render(
       <BrowserRouter>
-        <Leaderboards />
+        <LBoard />
       </BrowserRouter>
     );
   });

@@ -47,57 +47,218 @@ export const prs = {
   "25k": "--:--:--",
   "30k": "--:--:--",
   "half-marathon": "01:49:30",
-  "marathon": "03:40:30",
-}
+  marathon: "03:40:30",
+};
 
-export const leaderboards = {
-  "5k": {
-    "Brad": "00:17:30",
-    "RunReg": "00:18:00",
-    "Jake": "00:18:30",
-    "Max": "00:18:35",
-    "Christine": "00:18:56",
+export const leaderboards = [
+  {
+    distance: "5k",
+    competitors: {
+      first: {
+        name: "Brad",
+        time: "00:17:30",
+        date: "2021-02-02"
+      },
+      second: {
+        name: "RunReg",
+        time: "00:18:00",
+        date: "2021-02-02"
+      },
+      third: {
+        name: "Jake",
+        time: "00:18:30",
+        date: "2021-02-02"
+      },
+      fourth: {
+        name: "Max",
+        time: "00:18:35",
+        date: "2021-02-02"
+      },
+      fifth: {
+        name: "Christine",
+        time: "00:18:56",
+        date: "2021-02-02"
+      }
+    }
   },
-  "10k": {
-    "Brad": "00:45:30",
-    "RunReg": "00:45:45",
-    "Jake": "00:46:30",
-    "Max": "00:46:45",
-    "Christine": "00:47:00",
+  {
+    distance: "10k",
+    competitors: {
+      first: {
+        name: "Brad",
+        time: "00:17:30",
+        date: "2021-02-02"
+      },
+      second: {
+        name: "RunReg",
+        time: "00:18:00",
+        date: "2021-02-02"
+      },
+      third: {
+        name: "Jake",
+        time: "00:18:30",
+        date: "2021-02-02"
+      },
+      fourth: {
+        name: "Max",
+        time: "00:18:35",
+        date: "2021-02-02"
+      },
+      fifth: {
+        name: "Christine",
+        time: "00:18:56",
+        date: "2021-02-02"
+      }
+    }
   },
-  "15k": {
-    "Brad": "00:45:30",
-    "RunReg": "00:45:45",
-    "Jake": "00:46:30",
-    "Max": "00:46:45",
-    "Christine": "00:47:00",
+  {
+    distance: "15k",
+    competitors: {
+      first: {
+        name: "Brad",
+        time: "00:17:30",
+        date: "2021-02-02"
+      },
+      second: {
+        name: "RunReg",
+        time: "00:18:00",
+        date: "2021-02-02"
+      },
+      third: {
+        name: "Jake",
+        time: "00:18:30",
+        date: "2021-02-02"
+      },
+      fourth: {
+        name: "Max",
+        time: "00:18:35",
+        date: "2021-02-02"
+      },
+      fifth: {
+        name: "Christine",
+        time: "00:18:56",
+        date: "2021-02-02"
+      }
+    }
   },
-  "25k": {
-    "Brad": "00:45:30",
-    "RunReg": "00:45:45",
-    "Jake": "00:46:30",
-    "Max": "00:46:45",
-    "Christine": "00:47:00",
+  {
+    distance: "25k",
+    competitors: {
+      first: {
+        name: "Brad",
+        time: "00:17:30",
+        date: "2021-02-02"
+      },
+      second: {
+        name: "RunReg",
+        time: "00:18:00",
+        date: "2021-02-02"
+      },
+      third: {
+        name: "Jake",
+        time: "00:18:30",
+        date: "2021-02-02"
+      },
+      fourth: {
+        name: "Max",
+        time: "00:18:35",
+        date: "2021-02-02"
+      },
+      fifth: {
+        name: "Christine",
+        time: "00:18:56",
+        date: "2021-02-02"
+      }
+    }
   },
-  "30k": {
-    "Brad": "00:45:30",
-    "RunReg": "00:45:45",
-    "Jake": "00:46:30",
-    "Max": "00:46:45",
-    "Christine": "00:47:00",
+  {
+    distance: "30k",
+    competitors: {
+      first: {
+        name: "Brad",
+        time: "00:17:30",
+        date: "2021-02-02"
+      },
+      second: {
+        name: "RunReg",
+        time: "00:18:00",
+        date: "2021-02-02"
+      },
+      third: {
+        name: "Jake",
+        time: "00:18:30",
+        date: "2021-02-02"
+      },
+      fourth: {
+        name: "Max",
+        time: "00:18:35",
+        date: "2021-02-02"
+      },
+      fifth: {
+        name: "Christine",
+        time: "00:18:56",
+        date: "2021-02-02"
+      }
+    }
   },
-  "half-marathon": {
-    "Brad": "00:45:30",
-    "RunReg": "00:45:45",
-    "Jake": "00:46:30",
-    "Max": "00:46:45",
-    "Christine": "00:47:00",
+  {
+    distance: "half-marathon",
+    competitors: {
+      first: {
+        name: "Brad",
+        time: "00:17:30",
+        date: "2021-02-02"
+      },
+      second: {
+        name: "RunReg",
+        time: "00:18:00",
+        date: "2021-02-02"
+      },
+      third: {
+        name: "Jake",
+        time: "00:18:30",
+        date: "2021-02-02"
+      },
+      fourth: {
+        name: "Max",
+        time: "00:18:35",
+        date: "2021-02-02"
+      },
+      fifth: {
+        name: "Christine",
+        time: "00:18:56",
+        date: "2021-02-02"
+      }
+    }
   },
-  "marathon": {
-    "Brad": "00:45:30",
-    "RunReg": "00:45:45",
-    "Jake": "00:46:30",
-    "Max": "00:46:45",
-    "Christine": "00:47:00",
+  {
+    distance: "marathon",
+    competitors: {
+      first: {
+        name: "Brad",
+        time: "00:17:30",
+        date: "2021-02-02"
+      },
+      second: {
+        name: "RunReg",
+        time: "00:18:00",
+        date: "2021-02-02"
+      },
+      third: {
+        name: "Jake",
+        time: "00:18:30",
+        date: "2021-02-02"
+      },
+      fourth: {
+        name: "Max",
+        time: "00:18:35",
+        date: "2021-02-02"
+      },
+      fifth: {
+        name: "Christine",
+        time: "00:18:56",
+        date: "2021-02-02"
+      }
+    }
   },
-}
+];

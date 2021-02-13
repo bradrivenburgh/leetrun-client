@@ -15,6 +15,7 @@ function App() {
   /* State */
   const [currentRun, setCurrentRun] = useState({});
   const [allRuns, setAllRuns] = useState(runEntries);
+  const [allRunsCopy] = useState(allRuns);
   
   /* handler for API call  */
 
@@ -32,7 +33,7 @@ function App() {
           </Route>
           <Route path='/summary'>
             <Nav />
-            <Summary props={{ allRuns, prs, setAllRuns, setCurrentRun }} />
+            <Summary props={{ allRuns, prs, allRunsCopy, setAllRuns, setCurrentRun }} />
           </Route>
           <Route path='/record-run'>
             <Nav />

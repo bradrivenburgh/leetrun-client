@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SummaryFilters.css";
 
-function SummaryFilters() {
+function SummaryFilters({props: {handleSearch, handleFilter}}) {
   const [formData, setFormData] = useState({
     search: "",
     distance_f: "",
@@ -21,7 +21,7 @@ function SummaryFilters() {
   return (
     <>
       <div className='summary-filters__controls'>
-        <form className='summary-filters__search'>
+        <form className='summary-filters__search' onSubmit={(e) => handleSearch(e, formData.search)}>
           <label htmlFor='search'>Search: </label>
           <input
             name='search'
@@ -33,7 +33,7 @@ function SummaryFilters() {
           <button>Search</button>
         </form>
 
-        <form className="summary-filters__filters">
+        <form className="summary-filters__filters" onSubmit={(e) => handleFilter(e, {...formData})}>
           <p>Filter by: </p>
           <label htmlFor='distance_f'>Distance:</label>
           <select
@@ -107,6 +107,13 @@ function SummaryFilters() {
       </div>
     </>
   );
+}
+
+SummaryFilters.defaultProps = {
+  props: {
+    handleSearch: () => {},
+    handleFilter: () => {},
+  }
 }
 
 export default SummaryFilters;

@@ -4,13 +4,7 @@ import SummaryFilters from "./SummaryFilters";
 import "./Summary.css";
 
 function Summary({
-  props: {
-    allRuns,
-    prs,
-    allRunsCopy,
-    setAllRuns,
-    setCurrentRun,
-  },
+  props: { allRuns, prs, allRunsCopy, setAllRuns, setCurrentRun },
 }) {
   const loggedRuns = allRuns.map((run, key) => {
     return (
@@ -20,18 +14,24 @@ function Summary({
     );
   });
 
-  const handleSearch = (e, value) => {
-    e.preventDefault();
-    const trimmedVal = value.trim();
-    const result =
-      trimmedVal === ""
-        ? allRunsCopy
-        : allRuns.filter((run) => run.location.includes(trimmedVal));
-    setAllRuns(result);
-  };
-
   const handleFilter = (e, data) => {
     e.preventDefault();
+    let result = allRunsCopy;
+    for (let [key, value] of Object.entries(data)) {
+      if ((key === 'public' && value) || value.length > 0) {
+        if (key === 'search') {
+          result = result.filter((run) => run.location.includes(value.trim()));
+        }
+        else {
+          result = result.filter((run) => {
+            console.log(run[key])
+            return run[key] === value
+          });
+        }
+      }
+    }
+    setAllRuns(result);
+
 
   };
 
@@ -95,7 +95,7 @@ function Summary({
 
       <section className='summary-entries'>
         <h2>Runs</h2>
-        <SummaryFilters props={{ handleFilter, handleSearch }} />
+        <SummaryFilters props={{ handleFilter }} />
 
         {loggedRuns}
       </section>

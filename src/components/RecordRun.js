@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./RecordRun.css";
 
-function RecordRun() {
+function RecordRun({ props: { allRuns, setAllRuns } }) {
   const [formData, setFormData] = useState({
+    id: JSON.stringify(
+      new Date() + Math.floor(Math.random() * Math.floor(100))
+    ),
     date: "",
     location: "",
     distance: "",
-    hours: "",
-    minutes: "",
-    seconds: "",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
     weather: "",
     surface: "",
     terrain: "",
@@ -19,36 +22,37 @@ function RecordRun() {
 
   const handleChange = (e) => {
     const { name, type, value, checked } = e.target;
-    type === 'checkbox'
+    type === "checkbox"
       ? setFormData({ ...formData, [name]: checked })
       : setFormData({ ...formData, [name]: value });
   };
 
   let history = useHistory();
+  
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
+    setAllRuns([...allRuns, formData]);
     history.push("/");
   };
 
   const allFormValuesPresent = () => {
-    const areEmptyInputs = Object.values(formData).some(
-      (value) => {
-       return typeof value === 'string'
-          ? value.trim().length === 0
-          : value.length === 0
-      }
-    );
+    const areEmptyInputs = Object.values(formData).some((value) => {
+      return typeof value === "string"
+        ? value.trim().length === 0
+        : value.length === 0;
+    });
     return areEmptyInputs;
   };
 
   const getPresentDate = () => {
     let today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
     const yyyy = today.getFullYear();
-    today = yyyy + '-' + mm + '-' + dd;
+    today = yyyy + "-" + mm + "-" + dd;
     return today;
-  }
+  };
 
   return (
     <>
@@ -66,7 +70,7 @@ function RecordRun() {
             type='date'
             id='date'
             name='date'
-            min="1950-01-01"
+            min='1950-01-01'
             max={getPresentDate()}
             value={formData.date}
             onChange={(e) => handleChange(e)}
@@ -205,8 +209,7 @@ function RecordRun() {
             </button>
             <button
               disabled={allFormValuesPresent()}
-              aria-disabled={allFormValuesPresent()}
-              >
+              aria-disabled={allFormValuesPresent()}>
               Submit
             </button>
           </div>
@@ -215,5 +218,12 @@ function RecordRun() {
     </>
   );
 }
+
+RecordRun.defaultProps = {
+  props: {
+    allRuns: [],
+    setAllRuns: () => {},
+  },
+};
 
 export default RecordRun;

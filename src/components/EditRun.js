@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./EditRun.css";
 
-function EditRun({ props: currentRun }) {
+function EditRun({ props: {currentRun, setAllRuns} }) {
   const [formData, setFormData] = useState({
     date: currentRun.date || "",
     location: currentRun.location || "",
@@ -219,6 +219,7 @@ function EditRun({ props: currentRun }) {
 EditRun.defaultProps = {
   props: {
     currentRun: {
+      id: 1,
       date: "",
       location: "",
       distance: "",

@@ -28,10 +28,9 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
   };
 
   let history = useHistory();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
     setAllRuns([...allRuns, formData]);
     history.push("/");
   };

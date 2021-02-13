@@ -2,12 +2,12 @@ import React from "react";
 import SummaryEntry from './SummaryEntry';
 import "./Summary.css";
 
-function Summary({props: {allRuns, prs, setCurrentRun} }) {
+function Summary({props: {allRuns, prs, setAllRuns, setCurrentRun} }) {
 
   const loggedRuns = allRuns.map((run, key) => {
     return (
       <section key={key}>
-        <SummaryEntry props={{run, setCurrentRun}} />
+        <SummaryEntry props={{allRuns, run, setAllRuns, setCurrentRun}} />
       </section>
     );
   })
@@ -92,7 +92,9 @@ Summary.defaultProps = {
       "30k": "02:19:30",
       "half-marathon": "01:49:30",
       "marathon": "03:40:30",
-    }
+    },
+    setAllRuns: () => {},
+    setCurrentRun: () => {},
   }
 }
 

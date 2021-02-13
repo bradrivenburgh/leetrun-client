@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SummaryEntry.css";
 
-function SummaryEntry({ props: { run, setCurrentRun } }) {
+function SummaryEntry({ props: { allRuns, run, setAllRuns, setCurrentRun } }) {
   const [expand, setExpand] = useState(false);
 
   const handleClick = (e) => {
@@ -13,6 +13,12 @@ function SummaryEntry({ props: { run, setCurrentRun } }) {
         setExpand(!expand);
       }
     }
+  };
+
+  const handleDelete = () => {
+    const postDelete = allRuns.filter((current) => current.id !== run.id);
+    setAllRuns(postDelete);
+    console.log(allRuns);
   };
 
   const formatDate = (date) => {
@@ -60,7 +66,7 @@ function SummaryEntry({ props: { run, setCurrentRun } }) {
         <Link to='edit-run'>
           <button onClick={() => setCurrentRun(run)}>Edit</button>
         </Link>
-        <button>Delete</button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
     </>
   );
@@ -68,6 +74,7 @@ function SummaryEntry({ props: { run, setCurrentRun } }) {
 
 SummaryEntry.defaultProps = {
   props: {
+    allRuns: [],
     run: {
       date: "01/02/2021",
       location: "Philadelphia, PA",
@@ -81,6 +88,7 @@ SummaryEntry.defaultProps = {
       notes: "Good training run!",
       public: false,
     },
+    setAllRuns: () => {},
     setCurrentRun: () => {},
   },
 };

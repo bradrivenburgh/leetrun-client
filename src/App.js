@@ -32,7 +32,7 @@ function App() {
           </Route>
           <Route path='/summary'>
             <Nav />
-            <Summary props={{ allRuns, prs, setCurrentRun }} />
+            <Summary props={{ allRuns, prs, setAllRuns, setCurrentRun }} />
           </Route>
           <Route path='/record-run'>
             <Nav />

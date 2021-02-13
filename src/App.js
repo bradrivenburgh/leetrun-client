@@ -28,7 +28,7 @@ function App() {
           </Route>
           <Route path='/edit-run'>
             <Nav />
-            <EditRun props={{currentRun, setAllRuns}} />
+            <EditRun props={{allRuns, currentRun, setAllRuns}} />
           </Route>
           <Route path='/summary'>
             <Nav />

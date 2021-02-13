@@ -18,7 +18,6 @@ function SummaryEntry({ props: { allRuns, run, setAllRuns, setCurrentRun } }) {
   const handleDelete = () => {
     const postDelete = allRuns.filter((current) => current.id !== run.id);
     setAllRuns(postDelete);
-    console.log(allRuns);
   };
 
   const formatDate = (date) => {

@@ -1,6 +1,6 @@
 export const runEntries = [
   {
-    id: 1,
+    id: "1",
     date: "2021-02-01",
     location: "Philadelphia, PA",
     distance: "5",
@@ -14,7 +14,7 @@ export const runEntries = [
     public: false,
   },
   {
-    id: 2,
+    id: "2",
     date: "2021-01-02",
     location: "Haddonfield, NJ",
     distance: "5",
@@ -28,7 +28,7 @@ export const runEntries = [
     public: false,
   },
   {
-    id: 3,
+    id: "3",
     date: "2020-12-25",
     location: "Philadelphia, PA",
     distance: "5",

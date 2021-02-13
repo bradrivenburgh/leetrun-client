@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./EditRun.css";
 
-function EditRun({ props: {currentRun, setAllRuns} }) {
+function EditRun({ props: {currentRun, allRuns, setAllRuns} }) {
   const [formData, setFormData] = useState({
+    id: currentRun.id,
     date: currentRun.date || "",
     location: currentRun.location || "",
     distance: currentRun.distance || "",
@@ -27,6 +28,8 @@ function EditRun({ props: {currentRun, setAllRuns} }) {
   let history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
+    const postDelete = allRuns.filter((current) => current.id !== currentRun.id);
+    setAllRuns([...postDelete, formData]);
     history.push("/");
   };
 
@@ -218,8 +221,9 @@ function EditRun({ props: {currentRun, setAllRuns} }) {
 
 EditRun.defaultProps = {
   props: {
+    allRuns: [],
     currentRun: {
-      id: 1,
+      id: "1",
       date: "",
       location: "",
       distance: "",
@@ -232,6 +236,7 @@ EditRun.defaultProps = {
       notes: "",
       public: false,
     },
+    setAllRuns: () => {},
   },
 };
 

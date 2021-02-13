@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./EditRun.css";
 
-function EditRun({ props: {currentRun, allRuns, setAllRuns} }) {
+function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
   const [formData, setFormData] = useState({
     id: currentRun.id,
     date: currentRun.date || "",
@@ -20,7 +20,7 @@ function EditRun({ props: {currentRun, allRuns, setAllRuns} }) {
 
   const handleChange = (e) => {
     const { name, type, value, checked } = e.target;
-    type === 'checkbox'
+    type === "checkbox"
       ? setFormData({ ...formData, [name]: checked })
       : setFormData({ ...formData, [name]: value });
   };
@@ -28,8 +28,13 @@ function EditRun({ props: {currentRun, allRuns, setAllRuns} }) {
   let history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const postDelete = allRuns.filter((current) => current.id !== currentRun.id);
-    setAllRuns([...postDelete, formData]);
+    const modified = allRuns.map((current) => {
+      if (current.id === formData.id) {
+        current = formData;
+      }
+      return current;
+    });
+    setAllRuns(modified);
     history.push("/");
   };
 
@@ -44,12 +49,12 @@ function EditRun({ props: {currentRun, allRuns, setAllRuns} }) {
 
   const getPresentDate = () => {
     let today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0");
     const yyyy = today.getFullYear();
-    today = yyyy + '-' + mm + '-' + dd;
+    today = yyyy + "-" + mm + "-" + dd;
     return today;
-  }
+  };
 
   return (
     <>
@@ -67,7 +72,7 @@ function EditRun({ props: {currentRun, allRuns, setAllRuns} }) {
             type='date'
             id='date'
             name='date'
-            min="1950-01-01"
+            min='1950-01-01'
             max={getPresentDate()}
             value={formData.date}
             onChange={(e) => handleChange(e)}

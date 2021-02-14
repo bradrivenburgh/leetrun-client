@@ -5,7 +5,7 @@ import Chart from './Chart';
 import "./Summary.css";
 
 function Summary({
-  props: { allRuns, prs, allRunsCopy, setAllRuns, setCurrentRun },
+  props: { allRuns, prs, allRunsCopy, runFrequency, setAllRuns, setCurrentRun },
 }) {
   const loggedRuns = allRuns.map((run, key) => {
     return (
@@ -48,11 +48,7 @@ function Summary({
         </header>
 
         <h3>Run Frequency</h3>
-        <img
-          src='https://placehold.it/600x300?text=line%20graph%20run%20frequency'
-          alt='chart showing run frequency'
-        />
-        <Chart />
+        <Chart props={{runFrequency}}/>
 
         <h3>Badges</h3>
         <div className='summary-stats__badges'>
@@ -109,6 +105,7 @@ Summary.defaultProps = {
   props: {
     allRuns: [],
     allRunsCopy: [],
+    runFrequency: {},
     prs: {
       "5k": "00:19:30",
       "10k": "00:49:00",

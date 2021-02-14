@@ -279,3 +279,20 @@ export const leaderboards = [
     }
   },
 ];
+
+export const runFrequency = {
+  labels: ['January', 'February', 'March',
+           'April', 'May', 'June', 'July', 'August',
+           'September', 'October', 'November', 'December'],
+  datasets: [
+    {
+      label: 'Run Frequency',
+      fill: false,
+      lineTension: 0.5,
+      backgroundColor: 'rgba(75,192,192,1)',
+      borderColor: 'rgba(0,0,0,1)',
+      borderWidth: 2,
+      data: [10, 8, 13, 14, 16, 17, 18, 19, 22, 24, 18, 13]
+    }
+  ]
+}

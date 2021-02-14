@@ -9,14 +9,14 @@ import RecordRun from "./components/RecordRun";
 import Summary from "./components/Summary";
 import EditRun from "./components/EditRun";
 import Leaderboards from "./components/Leaderboards";
-import { runEntries, prs, leaderboards } from "./data";
+import { runEntries, prs, leaderboards, runFrequency } from "./data";
 
 function App() {
   /* State */
   const [currentRun, setCurrentRun] = useState({});
   const [allRuns, setAllRuns] = useState(runEntries);
   const [allRunsCopy] = useState(allRuns);
-  
+
   /* handler for API call  */
 
   return (
@@ -29,15 +29,24 @@ function App() {
           </Route>
           <Route path='/edit-run'>
             <Nav />
-            <EditRun props={{allRuns, currentRun, setAllRuns}} />
+            <EditRun props={{ allRuns, currentRun, setAllRuns }} />
           </Route>
           <Route path='/summary'>
             <Nav />
-            <Summary props={{ allRuns, prs, allRunsCopy, setAllRuns, setCurrentRun }} />
+            <Summary
+              props={{
+                allRuns,
+                prs,
+                allRunsCopy,
+                runFrequency,
+                setAllRuns,
+                setCurrentRun,
+              }}
+            />
           </Route>
           <Route path='/record-run'>
             <Nav />
-            <RecordRun props={{allRuns, setAllRuns}} />
+            <RecordRun props={{ allRuns, setAllRuns }} />
           </Route>
           <Route path='/login'>
             <Nav />

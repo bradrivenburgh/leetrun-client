@@ -4,6 +4,7 @@ import "./CreateAccount.css";
 
 function CreateAccount() {
   const [formData, setFormData] = useState({
+    user_name: "",
     first: "",
     last: "",
     email: "",
@@ -39,6 +40,15 @@ function CreateAccount() {
           action='#'
           className='create-account__form'
           onSubmit={(e) => handleSubmit(e)}>
+          <label htmlFor='user_name'>User Name:</label>
+          <input
+            type='text'
+            id='user_name'
+            name='user_name'
+            value={formData.user_name}
+            onChange={(e) => handleChange(e)}
+          />
+
           <label htmlFor='first'>First Name:</label>
           <input
             type='text'

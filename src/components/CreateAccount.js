@@ -5,8 +5,8 @@ import "./CreateAccount.css";
 function CreateAccount() {
   const [formData, setFormData] = useState({
     user_name: "",
-    first: "",
-    last: "",
+    first_name: "",
+    last_name: "",
     password: "",
     verify_password: "",
   });
@@ -48,21 +48,21 @@ function CreateAccount() {
             onChange={(e) => handleChange(e)}
           />
 
-          <label htmlFor='first'>First Name:</label>
+          <label htmlFor='first_name'>First Name:</label>
           <input
             type='text'
-            id='first'
-            name='first'
-            value={formData.first}
+            id='first_name'
+            name='first_name'
+            value={formData.first_name}
             onChange={(e) => handleChange(e)}
           />
 
-          <label htmlFor='last'>Last Name:</label>
+          <label htmlFor='last_name'>Last Name:</label>
           <input
             type='text'
-            id='last'
-            name='last'
-            value={formData.last}
+            id='last_name'
+            name='last_name'
+            value={formData.last_name}
             onChange={(e) => handleChange(e)}
           />
 

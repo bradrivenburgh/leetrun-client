@@ -1,6 +1,7 @@
 import React from "react";
 import SummaryEntry from "./SummaryEntry";
 import SummaryFilters from "./SummaryFilters";
+import Chart from './Chart';
 import "./Summary.css";
 
 function Summary({
@@ -51,6 +52,7 @@ function Summary({
           src='https://placehold.it/600x300?text=line%20graph%20run%20frequency'
           alt='chart showing run frequency'
         />
+        <Chart />
 
         <h3>Badges</h3>
         <div className='summary-stats__badges'>

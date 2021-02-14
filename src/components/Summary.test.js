@@ -4,6 +4,7 @@ import Summary from "./Summary";
 
 describe("Summary", () => {
   test("renders to the DOM", () => {
+
     render(
       <BrowserRouter>
         <Summary />

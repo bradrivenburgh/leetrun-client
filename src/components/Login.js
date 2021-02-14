@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import AuthApiService from '../services/auth-api-service';
 import "./Login.css";
 
 function Login() {
+  const [loginError, setLoginError] = useState(null);
   const [formData, setFormData] = useState({
     user_name: "",
     password: "",
@@ -13,12 +15,6 @@ function Login() {
     setFormData({ ...formData, [name]: value });
   };
 
-  let history = useHistory();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    history.push("/");
-  };
-
   const allFormValuesPresent = () => {
     const areEmptyInputs = Object.values(formData).some(
       (value) => value.trim().length === 0
@@ -26,8 +22,31 @@ function Login() {
     return areEmptyInputs;
   };
 
+  let history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoginError(null);
+    const { user_name, password } = e.target;
+
+    AuthApiService.postLogin({
+      user_name: user_name.value,
+      password: password.value,
+    })
+    .then(response => {
+      user_name.value = '';
+      password.value = '';
+      history.push('/summary');
+    })
+    .catch(response => {
+      setLoginError({ loginError: response.error })
+    })
+  }
+ 
+
   return (
     <>
+      {loginError && <p style={{color: "red"}}>{loginError}</p>}
       <header>
         <h1>Login</h1>
       </header>

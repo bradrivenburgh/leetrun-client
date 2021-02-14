@@ -7,7 +7,6 @@ function CreateAccount() {
     user_name: "",
     first: "",
     last: "",
-    email: "",
     password: "",
     verify_password: "",
   });
@@ -64,15 +63,6 @@ function CreateAccount() {
             id='last'
             name='last'
             value={formData.last}
-            onChange={(e) => handleChange(e)}
-          />
-
-          <label htmlFor='email'>Email:</label>
-          <input
-            type='email'
-            id='email'
-            name='email'
-            value={formData.email}
             onChange={(e) => handleChange(e)}
           />
 

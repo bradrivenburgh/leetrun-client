@@ -4,7 +4,7 @@ import "./Login.css";
 
 function Login() {
   const [formData, setFormData] = useState({
-    email: "",
+    user_name: "",
     password: "",
   });
 
@@ -36,12 +36,12 @@ function Login() {
           action='#'
           className='login__form'
           onSubmit={(e) => handleSubmit(e)}>
-          <label htmlFor='email'>Email:</label>
+          <label htmlFor='user_name'>User Name:</label>
           <input
-            type='email'
-            id='email'
-            name='email'
-            value={formData.email}
+            type='text'
+            id='user_name'
+            name='user_name'
+            value={formData.user_name}
             onChange={(e) => handleChange(e)}
           />
 

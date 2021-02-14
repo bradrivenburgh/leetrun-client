@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import PropTypes from 'prop-types';
 import "./EditRun.css";
 
 function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
@@ -254,5 +255,13 @@ EditRun.defaultProps = {
     setAllRuns: () => {},
   },
 };
+
+EditRun.propTypes = {
+  props: PropTypes.shape({
+    allRuns: PropTypes.array.isRequired,
+    currentRun: PropTypes.object.isRequired,
+    setAllRuns: PropTypes.func.isRequired,
+  })
+}
 
 export default EditRun;

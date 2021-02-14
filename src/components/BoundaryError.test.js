@@ -10,8 +10,6 @@ console.error = ""
 
 describe('Error Boundary', () => {
   it(`should render error boundary`, () => {
-    render(<BoundaryError><Child /></BoundaryError>)
-
-    
+    render(<BoundaryError><Child /></BoundaryError>);
   })
 })

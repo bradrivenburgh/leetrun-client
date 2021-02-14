@@ -1,5 +1,6 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
+import PropTypes from 'prop-types';
 
 class Chart extends React.Component {
   render() {
@@ -24,6 +25,16 @@ class Chart extends React.Component {
       </div>
     );
   }
+}
+
+Chart.defaultProps = {
+  props: {
+    runFrequency: {},
+  }
+}
+
+Chart.propTypes = {
+  props: PropTypes.object.isRequired,
 }
 
 

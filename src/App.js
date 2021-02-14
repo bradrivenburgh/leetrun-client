@@ -25,7 +25,7 @@ function App() {
         <Switch>
           <Route path='/leaderboards'>
             <Nav />
-            <Leaderboards props={leaderboards} />
+            <Leaderboards props={{leaderboards}} />
           </Route>
           <Route path='/edit-run'>
             <Nav />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import "./SummaryEntry.css";
 
 function SummaryEntry({ props: { allRuns, run, setAllRuns, setCurrentRun } }) {
@@ -91,5 +92,14 @@ SummaryEntry.defaultProps = {
     setCurrentRun: () => {},
   },
 };
+
+SummaryEntry.propTypes = {
+  props: PropTypes.shape({
+    allRuns: PropTypes.array.isRequired,
+    run:PropTypes.object.isRequired,
+    setAllRuns:PropTypes.func.isRequired,
+    setCurrentRun:PropTypes.func.isRequired,
+  })
+}
 
 export default SummaryEntry;

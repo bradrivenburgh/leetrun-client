@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import SummaryEntry from "./SummaryEntry";
 import SummaryFilters from "./SummaryFilters";
 import Chart from './Chart';
@@ -119,5 +120,16 @@ Summary.defaultProps = {
     setCurrentRun: () => {},
   },
 };
+
+Summary.propTypes = {
+  props: PropTypes.shape({
+    allRuns: PropTypes.array.isRequired,
+    allRunsCopy:PropTypes.array.isRequired,
+    runFrequency:PropTypes.object.isRequired,
+    prs:PropTypes.object.isRequired,
+    setAllRuns:PropTypes.func.isRequired,
+    setCurrentRun:PropTypes.func.isRequired,
+  })
+}
 
 export default Summary;

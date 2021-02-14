@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import PropTypes from 'prop-types';
 import "./RecordRun.css";
 
 function RecordRun({ props: { allRuns, setAllRuns } }) {
@@ -234,5 +235,12 @@ RecordRun.defaultProps = {
     setAllRuns: () => {},
   },
 };
+
+RecordRun.propTypes = {
+  props: PropTypes.shape({
+    allRuns: PropTypes.array.isRequired,
+    setAllRuns: PropTypes.func.isRequired,
+  })
+}
 
 export default RecordRun;

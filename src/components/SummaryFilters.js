@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import "./SummaryFilters.css";
 
 function SummaryFilters({ props: { handleFilter } }) {
@@ -126,5 +127,12 @@ SummaryFilters.defaultProps = {
     handleFilter: () => {},
   },
 };
+
+SummaryFilters.propTypes = {
+  props: PropTypes.shape({
+    handleFilter:PropTypes.func.isRequired,
+  })
+}
+
 
 export default SummaryFilters;

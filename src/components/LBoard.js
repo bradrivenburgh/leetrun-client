@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from 'prop-types';
 import "./LBoard.css";
 
 function LBoard({ props: board }) {
@@ -132,5 +133,12 @@ LBoard.defaultProps = {
     },
   },
 };
+
+LBoard.propTypes = {
+  props: PropTypes.shape({
+    distance: PropTypes.string.isRequired,
+    competitors: PropTypes.object.isRequired,
+  }),
+}
 
 export default LBoard;

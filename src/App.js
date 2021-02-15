@@ -9,6 +9,8 @@ import RecordRun from "./components/RecordRun";
 import Summary from "./components/Summary";
 import EditRun from "./components/EditRun";
 import Leaderboards from "./components/Leaderboards";
+import PublicOnlyRoute from './Utils/PublicOnlyRoute';
+import PrivateRoute from './Utils/PrivateRoute';
 import TokenService from "./services/token-service";
 import AuthApiService from "./services/auth-api-service";
 import IdleService from "./services/idle-service";
@@ -61,15 +63,15 @@ function App() {
     <main className='App'>
       <BoundaryError>
         <Nav />
-        
+
         <Switch>
-          <Route path='/leaderboards'>
+          <PrivateRoute path='/leaderboards'>
             <Leaderboards props={{ leaderboards }} />
-          </Route>
-          <Route path='/edit-run'>
+          </PrivateRoute>
+          <PrivateRoute path='/edit-run'>
             <EditRun props={{ allRuns, currentRun, setAllRuns }} />
-          </Route>
-          <Route path='/summary'>
+          </PrivateRoute>
+          <PrivateRoute path='/summary'>
             <Summary
               props={{
                 allRuns,
@@ -80,16 +82,16 @@ function App() {
                 setCurrentRun,
               }}
             />
-          </Route>
-          <Route path='/record-run'>
+          </PrivateRoute>
+          <PrivateRoute path='/record-run'>
             <RecordRun props={{ allRuns, setAllRuns }} />
-          </Route>
-          <Route path='/login'>
+          </PrivateRoute>
+          <PublicOnlyRoute path='/login'>
             <Login />
-          </Route>
-          <Route path='/create-account'>
+          </PublicOnlyRoute>
+          <PublicOnlyRoute path='/create-account'>
             <CreateAccount />
-          </Route>
+          </PublicOnlyRoute>
           <Route path='/'>
             <LandingPage />
           </Route>

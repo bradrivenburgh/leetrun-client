@@ -33,6 +33,7 @@ function App() {
 
     // remove the timeouts that auto logout when idle
     IdleService.unRegisterIdleResets();
+    setLoggedIn(false);
   };
 
   useEffect(() => {
@@ -92,7 +93,7 @@ function App() {
             <Login props={setLoggedIn}/>
           </PublicOnlyRoute>
           <PublicOnlyRoute path='/create-account'>
-            <CreateAccount />
+            <CreateAccount props={setLoggedIn} />
           </PublicOnlyRoute>
           <Route path='/'>
             <LandingPage />

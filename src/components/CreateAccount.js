@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import AuthApiService from '../services/auth-api-service';
 import "./CreateAccount.css";
 
-function CreateAccount() {
+function CreateAccount({props: setLoggedIn}) {
   const [formData, setFormData] = useState({
     user_name: "",
     first_name: "",
@@ -30,6 +30,15 @@ function CreateAccount() {
       last_name,
     })
     .then(user => {
+      // If account creation successful, login
+      AuthApiService.postLogin({
+        user_name,
+        password,
+      })
+      .then(res => {
+        setLoggedIn(true);
+      });
+  
       setFormData({
         user_name: "",
         first_name: "",
@@ -37,11 +46,12 @@ function CreateAccount() {
         password: "",
         verify_password: "",    
       })
+      
+      history.push("/");
     })
     .catch(response => {
       setRegistrationError(response.error);
     });
-    history.push("/");
   };
 
   const allFormValuesPresent = () => {

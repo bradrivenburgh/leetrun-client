@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import AuthApiService from '../services/auth-api-service';
 import "./CreateAccount.css";
 
 function CreateAccount() {
@@ -11,6 +12,7 @@ function CreateAccount() {
     verify_password: "",
   });
 
+  const [registrationError, setRegistrationError] = useState(null);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -19,6 +21,26 @@ function CreateAccount() {
   let history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { first_name, last_name, user_name, password } = formData;
+    setRegistrationError(null);
+    AuthApiService.postUser({
+      user_name,
+      password,
+      first_name,
+      last_name,
+    })
+    .then(user => {
+      setFormData({
+        user_name: "",
+        first_name: "",
+        last_name: "",
+        password: "",
+        verify_password: "",    
+      })
+    })
+    .catch(response => {
+      setRegistrationError({ registrationError: response.error});
+    });
     history.push("/");
   };
 
@@ -39,6 +61,9 @@ function CreateAccount() {
           action='#'
           className='create-account__form'
           onSubmit={(e) => handleSubmit(e)}>
+          
+          {registrationError && <p style={{color: "red"}}>{registrationError}</p>}
+          
           <label htmlFor='user_name'>User Name:</label>
           <input
             type='text'

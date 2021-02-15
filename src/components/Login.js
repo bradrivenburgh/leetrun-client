@@ -27,15 +27,17 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoginError(null);
-    const { user_name, password } = e.target;
+    const { user_name, password } = formData;
 
     AuthApiService.postLogin({
-      user_name: user_name.value,
-      password: password.value,
+      user_name,
+      password,
     })
     .then(response => {
-      user_name.value = '';
-      password.value = '';
+      setFormData({
+        user_name: '',
+        password: '',        
+      });
       history.push('/summary');
     })
     .catch(response => {
@@ -46,7 +48,9 @@ function Login() {
 
   return (
     <>
+    
       {loginError && <p style={{color: "red"}}>{loginError}</p>}
+      
       <header>
         <h1>Login</h1>
       </header>

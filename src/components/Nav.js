@@ -4,12 +4,14 @@ import TokenService from "../services/token-service";
 import IdleService from "../services/idle-service";
 import "./Nav.css";
 
-function Nav() {
+function Nav({props: {loggedIn, setLoggedIn}}) {
   const handleLogoutClick = () => {
     TokenService.clearAuthToken();
+    setLoggedIn(TokenService.hasAuthToken())
     /* when logging out, clear the callbacks to the refresh api and idle auto logout */
     TokenService.clearCallbackBeforeExpiry();
     IdleService.unRegisterIdleResets();
+    
   };
 
   const renderLogoutLink = () => {

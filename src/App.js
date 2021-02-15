@@ -21,6 +21,8 @@ function App() {
   const [currentRun, setCurrentRun] = useState({});
   const [allRuns, setAllRuns] = useState(runEntries);
   const [allRunsCopy] = useState(allRuns);
+  const [loggedIn, setLoggedIn] = useState(false)
+
 
   const logoutFromIdle = () => {
     // remove the token from localStorage
@@ -62,7 +64,7 @@ function App() {
   return (
     <main className='App'>
       <BoundaryError>
-        <Nav />
+        <Nav props={{loggedIn, setLoggedIn}} />
 
         <Switch>
           <PrivateRoute path='/leaderboards'>
@@ -87,7 +89,7 @@ function App() {
             <RecordRun props={{ allRuns, setAllRuns }} />
           </PrivateRoute>
           <PublicOnlyRoute path='/login'>
-            <Login />
+            <Login props={setLoggedIn}/>
           </PublicOnlyRoute>
           <PublicOnlyRoute path='/create-account'>
             <CreateAccount />

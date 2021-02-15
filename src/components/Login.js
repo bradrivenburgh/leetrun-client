@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import AuthApiService from '../services/auth-api-service';
 import "./Login.css";
 
-function Login() {
+function Login({props: setLoggedIn}) {
   const [loginError, setLoginError] = useState(null);
   const [formData, setFormData] = useState({
     user_name: "",
@@ -38,6 +38,7 @@ function Login() {
         user_name: '',
         password: '',        
       });
+      setLoggedIn(true);
       history.push('/summary');
     })
     .catch(response => {

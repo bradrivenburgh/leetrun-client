@@ -60,17 +60,16 @@ function App() {
   return (
     <main className='App'>
       <BoundaryError>
+        <Nav />
+        
         <Switch>
           <Route path='/leaderboards'>
-            <Nav />
             <Leaderboards props={{ leaderboards }} />
           </Route>
           <Route path='/edit-run'>
-            <Nav />
             <EditRun props={{ allRuns, currentRun, setAllRuns }} />
           </Route>
           <Route path='/summary'>
-            <Nav />
             <Summary
               props={{
                 allRuns,
@@ -83,19 +82,15 @@ function App() {
             />
           </Route>
           <Route path='/record-run'>
-            <Nav />
             <RecordRun props={{ allRuns, setAllRuns }} />
           </Route>
           <Route path='/login'>
-            <Nav />
             <Login />
           </Route>
           <Route path='/create-account'>
-            <Nav />
             <CreateAccount />
           </Route>
           <Route path='/'>
-            <Nav />
             <LandingPage />
           </Route>
         </Switch>

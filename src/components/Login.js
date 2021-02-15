@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import PropTypes from 'prop-types';
 import AuthApiService from '../services/auth-api-service';
 import "./Login.css";
 
@@ -93,5 +94,14 @@ function Login({props: setLoggedIn}) {
     </>
   );
 }
+
+Login.defaultProps = {
+  setLoggedIn: () => {},
+}
+
+Login.propTypes = {
+  setLoggedIn: PropTypes.func.isRequired
+}
+
 
 export default Login;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import TokenService from "../services/token-service";
 import IdleService from "../services/idle-service";
 import "./Nav.css";
@@ -54,6 +55,20 @@ function Nav({props: {loggedIn, setLoggedIn}}) {
       </ul>
     </nav>
   );
+}
+
+Nav.defaultProps = {
+  props: {
+    loggedIn: false,
+    setLoggedIn: () => {},
+  }
+}
+
+Nav.propTypes = {
+  props: PropTypes.shape({
+    loggedIn: PropTypes.bool.isRequired,
+    setLoggedIn: PropTypes.func.isRequired,
+  })
 }
 
 export default Nav;

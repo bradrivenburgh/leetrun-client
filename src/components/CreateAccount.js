@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import PropTypes from 'prop-types';
 import AuthApiService from "../services/auth-api-service";
 import "./CreateAccount.css";
 
@@ -151,5 +152,14 @@ function CreateAccount({ props: setLoggedIn }) {
     </>
   );
 }
+
+CreateAccount.defaultProps = {
+  setLoggedIn: () => {},
+};
+
+CreateAccount.propTypes = {
+  setLoggedIn: PropTypes.func.isRequired
+}
+
 
 export default CreateAccount;

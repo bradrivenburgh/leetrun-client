@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import AuthApiService from '../services/auth-api-service';
+import AuthApiService from "../services/auth-api-service";
 import "./CreateAccount.css";
 
-function CreateAccount({props: setLoggedIn}) {
+function CreateAccount({ props: setLoggedIn }) {
   const [formData, setFormData] = useState({
     user_name: "",
     first_name: "",
@@ -29,36 +29,45 @@ function CreateAccount({props: setLoggedIn}) {
       first_name,
       last_name,
     })
-    .then(user => {
-      // If account creation successful, login
-      AuthApiService.postLogin({
-        user_name,
-        password,
+      .then((user) => {
+        // If account creation successful, login
+        AuthApiService.postLogin({
+          user_name,
+          password,
+        }).then((res) => {
+          setLoggedIn(true);
+        });
+
+        setFormData({
+          user_name: "",
+          first_name: "",
+          last_name: "",
+          password: "",
+          verify_password: "",
+        });
+
+        history.push("/");
       })
-      .then(res => {
-        setLoggedIn(true);
+      .catch((response) => {
+        setRegistrationError(response.error);
       });
-  
-      setFormData({
-        user_name: "",
-        first_name: "",
-        last_name: "",
-        password: "",
-        verify_password: "",    
-      })
-      
-      history.push("/");
-    })
-    .catch(response => {
-      setRegistrationError(response.error);
-    });
+  };
+
+  const validatePassword = () => {
+    const { password, verify_password } = formData;
+    let match = true;
+    if (password.length > 0 && verify_password.length > 0) {
+      match = password === verify_password;
+    }
+    return match;
   };
 
   const allFormValuesPresent = () => {
     const areEmptyInputs = Object.values(formData).some(
       (value) => value.trim().length === 0
     );
-    return areEmptyInputs;
+    let valid = (!areEmptyInputs && validatePassword() ) ? false : true;
+    return valid;
   };
 
   return (
@@ -71,9 +80,17 @@ function CreateAccount({props: setLoggedIn}) {
           action='#'
           className='create-account__form'
           onSubmit={(e) => handleSubmit(e)}>
-          
-          {registrationError && <p style={{color: "red"}}>{registrationError}</p>}
-          
+          {registrationError && (
+            <p style={{ color: "red", maxWidth: "160px" }}>
+              {registrationError}
+            </p>
+          )}
+          {validatePassword() ? null : (
+            <p style={{ color: "red", maxWidth: "160px" }}>
+              Your passwords do not match
+            </p>
+          )}
+
           <label htmlFor='user_name'>User Name:</label>
           <input
             type='text'

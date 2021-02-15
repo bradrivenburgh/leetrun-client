@@ -39,7 +39,7 @@ function CreateAccount() {
       })
     })
     .catch(response => {
-      setRegistrationError({ registrationError: response.error});
+      setRegistrationError(response.error);
     });
     history.push("/");
   };

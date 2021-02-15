@@ -1,7 +1,7 @@
 let API_ENDPOINT = "";
 
 API_ENDPOINT = (process.env.NODE_ENV === 'development')
-  ? "http://localhost:8000/api/"
+  ? "http://localhost:8000/api"
   : process.env.REACT_APP_API_ENDPOINT
 
 const config = {

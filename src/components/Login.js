@@ -41,16 +41,13 @@ function Login() {
       history.push('/summary');
     })
     .catch(response => {
-      setLoginError({ loginError: response.error })
+      setLoginError(response.error)
     })
   }
  
 
   return (
-    <>
-    
-      {loginError && <p style={{color: "red"}}>{loginError}</p>}
-      
+    <>      
       <header>
         <h1>Login</h1>
       </header>
@@ -59,6 +56,9 @@ function Login() {
           action='#'
           className='login__form'
           onSubmit={(e) => handleSubmit(e)}>
+
+          {loginError && <p style={{color: "red", maxWidth: "160px"}}>{loginError}</p>}
+
           <label htmlFor='user_name'>User Name:</label>
           <input
             type='text'

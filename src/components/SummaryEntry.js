@@ -27,6 +27,21 @@ function SummaryEntry({ props: { allRuns, run, setAllRuns, setCurrentRun } }) {
     return newDate;
   };
 
+  const formatTime = (hours, minutes, seconds) => {
+    const time = {
+      hours,
+      minutes,
+      seconds
+    };
+
+    for (const [key, value] of Object.entries(time)) {
+      if (value.length === 1) {
+        time[key] = "0" + value;
+      }      
+    }
+    return `${time.hours}:${time.minutes}:${time.seconds}`;
+  }
+
   return (
     <>
       <header
@@ -40,7 +55,7 @@ function SummaryEntry({ props: { allRuns, run, setAllRuns, setCurrentRun } }) {
             <strong>Distance:</strong> {run.distance}k
           </p>
           <p>
-            <strong>Time:</strong> {run.hours}:{run.minutes}:{run.seconds}
+            <strong>Time:</strong> {formatTime(run.hours, run.minutes, run.seconds)}
           </p>
         </div>
       </header>

@@ -9,8 +9,8 @@ import RecordRun from "./components/RecordRun";
 import Summary from "./components/Summary";
 import EditRun from "./components/EditRun";
 import Leaderboards from "./components/Leaderboards";
-import PublicOnlyRoute from './Utils/PublicOnlyRoute';
-import PrivateRoute from './Utils/PrivateRoute';
+import PublicOnlyRoute from "./Utils/PublicOnlyRoute";
+import PrivateRoute from "./Utils/PrivateRoute";
 import TokenService from "./services/token-service";
 import AuthApiService from "./services/auth-api-service";
 import IdleService from "./services/idle-service";
@@ -21,9 +21,9 @@ function App() {
   const [currentRun, setCurrentRun] = useState({});
   const [allRuns, setAllRuns] = useState(runEntries);
   const [allRunsCopy] = useState(allRuns);
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false);
 
-
+  /* Handle idle logout / refresh */
   const logoutFromIdle = () => {
     // remove the token from localStorage
     TokenService.clearAuthToken();
@@ -46,14 +46,14 @@ function App() {
       // to prevent logoutFromIdle
       IdleService.registerIdleTimerResets();
 
-     // Queue a timeout just before the JWT token expires
+      // Queue a timeout just before the JWT token expires
       TokenService.queueCallbackBeforeExpiry(() => {
         // the timeout will call this callback just before the token expires
         AuthApiService.postRefreshToken();
       });
     }
     return () => {
-      // when the app unmounts, stop the event listeners 
+      // when the app unmounts, stop the event listeners
       // that auto logout (clear the token from storage)
       IdleService.unRegisterIdleResets();
 
@@ -65,7 +65,7 @@ function App() {
   return (
     <main className='App'>
       <BoundaryError>
-        <Nav props={{loggedIn, setLoggedIn}} />
+        <Nav props={{ loggedIn, setLoggedIn }} />
 
         <Switch>
           <PrivateRoute path='/leaderboards'>
@@ -78,8 +78,8 @@ function App() {
             <Summary
               props={{
                 allRuns,
-                prs,
                 allRunsCopy,
+                prs,
                 runFrequency,
                 setAllRuns,
                 setCurrentRun,
@@ -90,7 +90,7 @@ function App() {
             <RecordRun props={{ allRuns, setAllRuns }} />
           </PrivateRoute>
           <PublicOnlyRoute path='/login'>
-            <Login props={setLoggedIn}/>
+            <Login props={setLoggedIn} />
           </PublicOnlyRoute>
           <PublicOnlyRoute path='/create-account'>
             <CreateAccount props={setLoggedIn} />

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from 'prop-types';
 import Chart from './Chart';
 import RunApiService from '../services/run-api-service';
@@ -7,8 +7,18 @@ import SummaryFilters from "./SummaryFilters";
 import "./Summary.css";
 
 function Summary({
-  props: { allRuns, prs, allRunsCopy, runFrequency, setAllRuns, setCurrentRun },
+  props: { allRuns, prs, allRunsCopy, setAllRunsCopy, runFrequency, setAllRuns, setCurrentRun },
 }) {
+
+  /* Get run entries when the component mounts */
+  useEffect(() => {
+    RunApiService.getRuns()
+      .then((runs) => {
+        setAllRuns(runs);
+        setAllRunsCopy(runs);
+      })
+  }, [])
+
   const loggedRuns = allRuns.map((run, key) => {
     return (
       <section key={key}>
@@ -118,6 +128,7 @@ Summary.defaultProps = {
       marathon: "03:40:30",
     },
     setAllRuns: () => {},
+    setAllRunsCopy: () => {},
     setCurrentRun: () => {},
   },
 };

@@ -19,18 +19,16 @@ import { runEntries, prs, leaderboards, runFrequency } from "./data";
 function App() {
   /* State */
   const [currentRun, setCurrentRun] = useState({});
-  const [allRuns, setAllRuns] = useState(runEntries);
-  const [allRunsCopy] = useState(allRuns);
+  const [allRuns, setAllRuns] = useState([]);
+  const [allRunsCopy, setAllRunsCopy] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
 
   /* Handle idle logout / refresh */
   const logoutFromIdle = () => {
     // remove the token from localStorage
     TokenService.clearAuthToken();
-
     // remove any queued calls to the refresh endpoint
     TokenService.clearCallbackBeforeExpiry();
-
     // remove the timeouts that auto logout when idle
     IdleService.unRegisterIdleResets();
     setLoggedIn(false);
@@ -39,13 +37,11 @@ function App() {
   useEffect(() => {
     //  we'll set this to logout a user when they're idle
     IdleService.setIdleCallback(logoutFromIdle);
-
     // if a user is logged in
     if (TokenService.hasAuthToken()) {
       // tell the idle service to register event listeners
       // to prevent logoutFromIdle
       IdleService.registerIdleTimerResets();
-
       // Queue a timeout just before the JWT token expires
       TokenService.queueCallbackBeforeExpiry(() => {
         // the timeout will call this callback just before the token expires
@@ -56,7 +52,6 @@ function App() {
       // when the app unmounts, stop the event listeners
       // that auto logout (clear the token from storage)
       IdleService.unRegisterIdleResets();
-
       // remove the refresh endpoint request
       TokenService.clearCallbackBeforeExpiry();
     };
@@ -82,6 +77,7 @@ function App() {
                 prs,
                 runFrequency,
                 setAllRuns,
+                setAllRunsCopy,
                 setCurrentRun,
               }}
             />

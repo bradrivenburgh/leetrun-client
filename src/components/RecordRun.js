@@ -15,9 +15,9 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
     hours: "00",
     minutes: "00",
     seconds: "00",
-    weather: "",
-    surface: "",
-    terrain: "",
+    weather: "clear",
+    surface: "pavement",
+    terrain: "mixed",
     notes: "",
     public: false,
   });
@@ -34,6 +34,8 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setAllRuns([...allRuns, formData]);
+    RunApiService.postRun(formData)
+    .then(res => console.log(res))
     history.push("/summary");
   };
 
@@ -144,6 +146,7 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
               type='radio'
               id='clear'
               name='weather'
+              defaultChecked
               value='clear'
               onChange={(e) => handleChange(e)}
             />
@@ -174,7 +177,6 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
             name='surface'
             value={formData.surface}
             onChange={(e) => handleChange(e)}>
-            <option value=''>--Please choose an option--</option>
             <option value='pavement'>pavement</option>
             <option value='trail'>trail</option>
           </select>
@@ -185,7 +187,6 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
             name='terrain'
             value={formData.terrain}
             onChange={(e) => handleChange(e)}>
-            <option value=''>--Please choose an option--</option>
             <option value='mixed'>mixed</option>
             <option value='flat'>flat</option>
             <option value='uphill'>uphill</option>

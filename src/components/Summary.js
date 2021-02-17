@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import Chart from './Chart';
+import RunApiService from '../services/run-api-service';
 import SummaryEntry from "./SummaryEntry";
 import SummaryFilters from "./SummaryFilters";
-import Chart from './Chart';
 import "./Summary.css";
 
 function Summary({

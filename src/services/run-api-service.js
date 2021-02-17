@@ -53,14 +53,16 @@ const RunApiService = {
     return fetch(`${config.API_ENDPOINT}/runs/${run_id}`, {
       method: 'DELETE',
       headers: {
+        'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
     .then(res =>
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    );
+        : null
+    )
+    .catch(error => console.log(error))
 
   }
 }

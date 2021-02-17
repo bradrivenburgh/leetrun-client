@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import RunApiService from '../services/run-api-service';
 import "./SummaryEntry.css";
 
-function SummaryEntry({ props: { allRuns, run, setAllRuns, setCurrentRun } }) {
+function SummaryEntry({ props: { allRuns, allRunsCopy, run, setAllRuns, setAllRunsCopy, setCurrentRun } }) {
   const [expand, setExpand] = useState(false);
 
   const handleClick = (e) => {
@@ -18,8 +18,11 @@ function SummaryEntry({ props: { allRuns, run, setAllRuns, setCurrentRun } }) {
   };
 
   const handleDelete = () => {
-    const postDelete = allRuns.filter((current) => current.id !== run.id);
-    setAllRuns(postDelete);
+    const postDelete = allRunsCopy.filter((current) => current.id !== run.id);
+    RunApiService.deleteRun(run.id);
+    
+    setAllRunsCopy(postDelete);
+    setAllRuns(postDelete)
   };
 
   const formatDate = (date) => {
@@ -91,6 +94,7 @@ function SummaryEntry({ props: { allRuns, run, setAllRuns, setCurrentRun } }) {
 SummaryEntry.defaultProps = {
   props: {
     allRuns: [],
+    allRunsCopy: [],
     run: {
       date: "01/02/2021",
       location: "Philadelphia, PA",
@@ -105,6 +109,7 @@ SummaryEntry.defaultProps = {
       public: false,
     },
     setAllRuns: () => {},
+    setAllRunsCopy: () => {},
     setCurrentRun: () => {},
   },
 };
@@ -112,9 +117,11 @@ SummaryEntry.defaultProps = {
 SummaryEntry.propTypes = {
   props: PropTypes.shape({
     allRuns: PropTypes.array.isRequired,
+    allRunsCopy: PropTypes.array.isRequired,
     run:PropTypes.object.isRequired,
     setAllRuns:PropTypes.func.isRequired,
     setCurrentRun:PropTypes.func.isRequired,
+    setAllRunsCopy: PropTypes.func.isRequired,
   })
 }
 

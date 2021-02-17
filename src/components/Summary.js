@@ -22,7 +22,7 @@ function Summary({
   const loggedRuns = allRuns.map((run, key) => {
     return (
       <section key={key}>
-        <SummaryEntry props={{ allRuns, allRunsCopy, run, setAllRuns, setAllRunsCopy, setCurrentRun }} />
+        <SummaryEntry props={{ allRunsCopy, run, setAllRuns, setAllRunsCopy, setCurrentRun }} />
       </section>
     );
   });

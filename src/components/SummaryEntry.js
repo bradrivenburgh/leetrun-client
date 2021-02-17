@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import RunApiService from '../services/run-api-service';
 import "./SummaryEntry.css";
 
-function SummaryEntry({ props: { allRuns, allRunsCopy, run, setAllRuns, setAllRunsCopy, setCurrentRun } }) {
+function SummaryEntry({ props: { allRunsCopy, run, setAllRuns, setAllRunsCopy, setCurrentRun } }) {
   const [expand, setExpand] = useState(false);
 
   const handleClick = (e) => {
@@ -93,7 +93,6 @@ function SummaryEntry({ props: { allRuns, allRunsCopy, run, setAllRuns, setAllRu
 
 SummaryEntry.defaultProps = {
   props: {
-    allRuns: [],
     allRunsCopy: [],
     run: {
       date: "01/02/2021",
@@ -116,7 +115,6 @@ SummaryEntry.defaultProps = {
 
 SummaryEntry.propTypes = {
   props: PropTypes.shape({
-    allRuns: PropTypes.array.isRequired,
     allRunsCopy: PropTypes.array.isRequired,
     run:PropTypes.object.isRequired,
     setAllRuns:PropTypes.func.isRequired,

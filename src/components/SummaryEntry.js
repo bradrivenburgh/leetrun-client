@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
-import RunApiService from '../services/run-api-service';
+import PropTypes from "prop-types";
+import RunApiService from "../services/run-api-service";
 import "./SummaryEntry.css";
 
-function SummaryEntry({ props: { allRunsCopy, run, setAllRuns, setAllRunsCopy, setCurrentRun } }) {
+function SummaryEntry({
+  props: { allRunsCopy, run, setAllRuns, setAllRunsCopy, setCurrentRun },
+}) {
   const [expand, setExpand] = useState(false);
 
   const handleClick = (e) => {
@@ -20,9 +22,9 @@ function SummaryEntry({ props: { allRunsCopy, run, setAllRuns, setAllRunsCopy, s
   const handleDelete = () => {
     const postDelete = allRunsCopy.filter((current) => current.id !== run.id);
     RunApiService.deleteRun(run.id);
-    
+
     setAllRunsCopy(postDelete);
-    setAllRuns(postDelete)
+    setAllRuns(postDelete);
   };
 
   const formatDate = (date) => {
@@ -35,16 +37,16 @@ function SummaryEntry({ props: { allRunsCopy, run, setAllRuns, setAllRunsCopy, s
     const time = {
       hours,
       minutes,
-      seconds
+      seconds,
     };
 
     for (const [key, value] of Object.entries(time)) {
       if (value.length === 1) {
         time[key] = "0" + value;
-      }      
+      }
     }
     return `${time.hours}:${time.minutes}:${time.seconds}`;
-  }
+  };
 
   return (
     <>
@@ -59,9 +61,12 @@ function SummaryEntry({ props: { allRunsCopy, run, setAllRuns, setAllRunsCopy, s
             <strong>Distance:</strong> {run.distance}k
           </p>
           <p>
-            <strong>Time:</strong> {formatTime(run.hours, run.minutes, run.seconds)}
+            <strong>Time:</strong>{" "}
+            {formatTime(run.hours, run.minutes, run.seconds)}
           </p>
         </div>
+        {!expand ? <p>&#9660;</p> : <p>&#9650;</p>}
+
       </header>
 
       <div className={expand ? "collapse expand" : "collapse"}>
@@ -116,11 +121,11 @@ SummaryEntry.defaultProps = {
 SummaryEntry.propTypes = {
   props: PropTypes.shape({
     allRunsCopy: PropTypes.array.isRequired,
-    run:PropTypes.object.isRequired,
-    setAllRuns:PropTypes.func.isRequired,
-    setCurrentRun:PropTypes.func.isRequired,
+    run: PropTypes.object.isRequired,
+    setAllRuns: PropTypes.func.isRequired,
+    setCurrentRun: PropTypes.func.isRequired,
     setAllRunsCopy: PropTypes.func.isRequired,
-  })
-}
+  }),
+};
 
 export default SummaryEntry;

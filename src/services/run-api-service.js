@@ -38,14 +38,12 @@ const RunApiService = {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify({
-        updatedRun
-      })
+      body: JSON.stringify(updatedRun)
     })
     .then(res =>
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
-        : res.json()
+        : null
     );
   },
 

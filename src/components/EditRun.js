@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import RunApiService from '../services/run-api-service';
 import "./EditRun.css";
 
-function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
+function EditRun({ props: { currentRun, allRunsCopy, setAllRuns, setAllRunsCopy } }) {
   const [formData, setFormData] = useState({
     id: currentRun.id,
     date: currentRun.date || "",
@@ -30,12 +30,14 @@ function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
   let history = useHistory();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const modified = allRuns.map((current) => {
+    const modified = allRunsCopy.map((current) => {
       if (current.id === formData.id) {
         current = formData;
       }
       return current;
     });
+    RunApiService.patchRun(currentRun.id, formData);
+    setAllRunsCopy(modified);
     setAllRuns(modified);
     history.push("/summary");
   };
@@ -180,7 +182,6 @@ function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
             name='surface'
             value={formData.surface}
             onChange={(e) => handleChange(e)}>
-            <option value=''>--Please choose an option--</option>
             <option value='pavement'>pavement</option>
             <option value='trail'>trail</option>
           </select>
@@ -191,7 +192,6 @@ function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
             name='terrain'
             value={formData.terrain}
             onChange={(e) => handleChange(e)}>
-            <option value=''>--Please choose an option--</option>
             <option value='mixed'>mixed</option>
             <option value='flat'>flat</option>
             <option value='uphill'>uphill</option>
@@ -238,7 +238,7 @@ function EditRun({ props: { currentRun, allRuns, setAllRuns } }) {
 
 EditRun.defaultProps = {
   props: {
-    allRuns: [],
+    allRunsCopy: [],
     currentRun: {
       id: "1",
       date: "",
@@ -254,14 +254,16 @@ EditRun.defaultProps = {
       public: false,
     },
     setAllRuns: () => {},
+    setAllRunsCopy: () => {}
   },
 };
 
 EditRun.propTypes = {
   props: PropTypes.shape({
-    allRuns: PropTypes.array.isRequired,
+    allRunsCopy: PropTypes.array.isRequired,
     currentRun: PropTypes.object.isRequired,
     setAllRuns: PropTypes.func.isRequired,
+    setAllRunsCopy: PropTypes.func.isRequired
   })
 }
 

@@ -67,7 +67,7 @@ function App() {
             <Leaderboards props={{ leaderboards }} />
           </PrivateRoute>
           <PrivateRoute path='/edit-run'>
-            <EditRun props={{ allRuns, currentRun, setAllRuns }} />
+            <EditRun props={{ allRunsCopy, currentRun, setAllRuns, setAllRunsCopy }} />
           </PrivateRoute>
           <PrivateRoute path='/summary'>
             <Summary

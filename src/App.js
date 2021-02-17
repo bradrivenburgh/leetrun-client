@@ -14,7 +14,7 @@ import PrivateRoute from "./Utils/PrivateRoute";
 import TokenService from "./services/token-service";
 import AuthApiService from "./services/auth-api-service";
 import IdleService from "./services/idle-service";
-import { runEntries, prs, leaderboards, runFrequency } from "./data";
+import { prs, leaderboards, runFrequency } from "./data";
 
 function App() {
   /* State */

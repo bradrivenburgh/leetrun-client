@@ -37,7 +37,6 @@ function Summary({
         }
         else {
           result = result.filter((run) => {
-            console.log(run[key])
             return run[key] === value
           });
         }

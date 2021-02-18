@@ -34,12 +34,12 @@ function Nav({props: {loggedIn, setLoggedIn}}) {
       </div>
       <ul>
         <li>
-        {TokenService.hasAuthToken()
+        {loggedIn
             ? ""
             : <Link to='create-account'>Create account</Link>}
         </li>
         <li>
-          {TokenService.hasAuthToken()
+          {loggedIn
             ? renderLogoutLink()
             : renderLoginLink()}
         </li>

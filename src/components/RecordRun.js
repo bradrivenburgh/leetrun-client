@@ -35,7 +35,6 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
     e.preventDefault();
     setAllRuns([...allRuns, formData]);
     RunApiService.postRun(formData)
-    .then(res => console.log(res))
     history.push("/summary");
   };
 

@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 class Chart extends React.Component {
   render() {
-    const {props: {runFrequency}} = this.props
-
+    const {props: {chartData}} = this.props
+    console.log(chartData)
     return (
       <div>
         <Line
-          data={runFrequency}
+          data={chartData}
           options={{
             title:{
               display:true,
@@ -29,7 +29,7 @@ class Chart extends React.Component {
 
 Chart.defaultProps = {
   props: {
-    runFrequency: {},
+    chartData: {},
   }
 }
 

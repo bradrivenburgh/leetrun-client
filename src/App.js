@@ -14,14 +14,14 @@ import PrivateRoute from "./Utils/PrivateRoute";
 import TokenService from "./services/token-service";
 import AuthApiService from "./services/auth-api-service";
 import IdleService from "./services/idle-service";
-import { prs, leaderboards, runFrequency } from "./data";
+import { prs, leaderboards } from "./data";
 
 function App() {
   /* State */
   const [currentRun, setCurrentRun] = useState({});
   const [allRuns, setAllRuns] = useState([]);
   const [allRunsCopy, setAllRunsCopy] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(TokenService.hasAuthToken);
 
   /* Handle idle logout / refresh */
   const logoutFromIdle = () => {
@@ -31,7 +31,7 @@ function App() {
     TokenService.clearCallbackBeforeExpiry();
     // remove the timeouts that auto logout when idle
     IdleService.unRegisterIdleResets();
-    setLoggedIn(false);
+    setLoggedIn(TokenService.hasAuthToken());
   };
 
   useEffect(() => {
@@ -75,7 +75,6 @@ function App() {
                 allRuns,
                 allRunsCopy,
                 prs,
-                runFrequency,
                 setAllRuns,
                 setAllRunsCopy,
                 setCurrentRun,

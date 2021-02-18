@@ -1,14 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import Chart from './Chart';
 import RunApiService from '../services/run-api-service';
+import runFrequency from '../Utils/run-frequency';
 import SummaryEntry from "./SummaryEntry";
 import SummaryFilters from "./SummaryFilters";
 import "./Summary.css";
 
 function Summary({
-  props: { allRuns, prs, allRunsCopy, setAllRunsCopy, runFrequency, setAllRuns, setCurrentRun },
+  props: { allRuns, prs, allRunsCopy, setAllRunsCopy, setAllRuns, setCurrentRun },
 }) {
+
+  const [chartData, setChartData] = useState(null);
 
   /* Get run entries when the component mounts */
   useEffect(() => {
@@ -16,8 +19,20 @@ function Summary({
       .then((runs) => {
         setAllRuns(runs);
         setAllRunsCopy(runs);
+        if (allRunsCopy) {
+          return allRunsCopy;
+        }
       })
-  }, [])
+      .then(data => {
+        setChartData(runFrequency.addRunOccurrences(data))
+      })
+  }, []);
+
+  // useEffect(() => {
+  //   if (allRunsCopy) {
+  //     setChartData(runFrequency.addRunOccurrences(allRunsCopy))
+  //   }
+  // }, [allRunsCopy])
 
   const loggedRuns = allRuns.map((run, key) => {
     return (
@@ -43,8 +58,6 @@ function Summary({
       }
     }
     setAllRuns(result);
-
-
   };
 
   return (
@@ -59,7 +72,10 @@ function Summary({
         </header>
 
         <h3>Run Frequency</h3>
-        <Chart props={{runFrequency}}/>
+        {chartData 
+        ? <Chart props={{chartData}} />
+        : <p>Loading chart...</p>}
+        {/* <Chart props={{runFrequency}}/> */}
 
         <h3>Badges</h3>
         <div className='summary-stats__badges'>
@@ -116,7 +132,6 @@ Summary.defaultProps = {
   props: {
     allRuns: [],
     allRunsCopy: [],
-    runFrequency: {},
     prs: {
       "5k": "00:19:30",
       "10k": "00:49:00",
@@ -136,7 +151,6 @@ Summary.propTypes = {
   props: PropTypes.shape({
     allRuns: PropTypes.array.isRequired,
     allRunsCopy:PropTypes.array.isRequired,
-    runFrequency:PropTypes.object.isRequired,
     prs:PropTypes.object.isRequired,
     setAllRuns:PropTypes.func.isRequired,
     setCurrentRun:PropTypes.func.isRequired,

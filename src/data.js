@@ -286,7 +286,7 @@ export const runFrequency = {
            'September', 'October', 'November', 'December'],
   datasets: [
     {
-      label: 'Run Frequency',
+      label: 'Run Frequency: Last 12-months',
       fill: false,
       lineTension: 0.5,
       backgroundColor: 'rgba(75,192,192,1)',

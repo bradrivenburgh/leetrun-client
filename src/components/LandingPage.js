@@ -2,6 +2,9 @@ import React from "react";
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AuthApiService from '../services/auth-api-service';
+import recordInterface from '../images/run-recording-interface.png'
+import chartImage from '../images/track-your-progress1.png'
+import filterAndEntry from '../images/track-your-progress2.png'
 import "./LandingPage.css";
 
 function LandingPage({props: setLoggedIn}) {
@@ -44,7 +47,7 @@ function LandingPage({props: setLoggedIn}) {
         <section>
           <h2>Record your runs</h2>
           <img
-            src='https://placehold.it/600x300?text=run%20recording%20interface'
+            src={recordInterface}
             alt='record run form'
           />
           <p>
@@ -57,9 +60,14 @@ function LandingPage({props: setLoggedIn}) {
         <section>
           <h2>Track your progress</h2>
           <img
-            src='https://placehold.it/600x300?text=summary%20view'
+            src={chartImage}
             alt='summary view'
           />
+          <img
+            src={filterAndEntry}
+            alt='summary view'
+          />
+
           <p>
             View a chart of how often you run over time and filter your
             runs based on a multitude of criteria.

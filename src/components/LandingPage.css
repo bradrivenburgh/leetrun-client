@@ -12,7 +12,12 @@
 
 .landing img {
   display: block;
-  margin: 0 auto;
+  margin: 1em auto;
+  max-height: 350px;
+  max-width: 350px;
+  padding: 1em;
+  border-radius: 10px;
+  border: 1px solid gray;
 }
 
 @media screen and (max-width: 599px) {
@@ -25,6 +30,12 @@
   img {
     max-width: 350px;
   }  
+}
+
+@media screen and (min-width: 1024px) {
+  .landing img {
+    display: flex;
+  }
 }
 
 .landing h1, h2 {

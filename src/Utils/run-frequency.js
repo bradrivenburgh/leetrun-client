@@ -2,7 +2,7 @@ const runFrequency = {
   labels: [],
   datasets: [
     {
-      label: "Run frequency over time",
+      label: "Runs",
       fill: false,
       lineTension: 0.5,
       backgroundColor: "rgba(75,192,192,1)",

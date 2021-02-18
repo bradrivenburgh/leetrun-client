@@ -38,7 +38,7 @@ function SummaryFilters({ props: { handleFilter } }) {
         <form
           className='summary-filters__filters'
           onSubmit={(e) => handleFilter(e, { ...formData })}>
-          <p>Filter by: </p>
+          <h3>Filter by: </h3>
           <label htmlFor='location'>Location: </label>
           <input
             name='location'

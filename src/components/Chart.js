@@ -13,7 +13,7 @@ class Chart extends React.Component {
           options={{
             title:{
               display:true,
-              text:'Run frequency',
+              text:'',
               fontSize:20
             },
             legend:{

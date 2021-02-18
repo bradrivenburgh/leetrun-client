@@ -62,17 +62,16 @@ function Summary({
 
       <section className='summary-stats'>
         <header>
-          <h2>Stats</h2>
+          <h2>Your runs over time</h2>
         </header>
 
-        <h3>Run Frequency</h3>
         {chartData 
         ? <Chart props={{chartData}} />
         : <p>Loading chart...</p>}
       </section>
 
-      <section className='summary-entries'>
-        <h2>Runs</h2>
+      <section style={{marginTop: "3em"}} className='summary-entries'>
+        <h2>Run entries</h2>
         <SummaryFilters props={{ handleFilter }} />
 
         {loggedRuns}

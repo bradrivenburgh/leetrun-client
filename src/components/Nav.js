@@ -47,9 +47,6 @@ function Nav({props: {loggedIn, setLoggedIn}}) {
           <Link to='summary'>Summary</Link>
         </li>
         <li>
-          <Link to='leaderboards'>Leaderboards</Link>
-        </li>
-        <li>
           <Link to='record-run'>Record run</Link>
         </li>
       </ul>

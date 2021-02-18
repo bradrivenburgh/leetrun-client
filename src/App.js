@@ -8,13 +8,12 @@ import Login from "./components/Login";
 import RecordRun from "./components/RecordRun";
 import Summary from "./components/Summary";
 import EditRun from "./components/EditRun";
-import Leaderboards from "./components/Leaderboards";
 import PublicOnlyRoute from "./Utils/PublicOnlyRoute";
 import PrivateRoute from "./Utils/PrivateRoute";
 import TokenService from "./services/token-service";
 import AuthApiService from "./services/auth-api-service";
 import IdleService from "./services/idle-service";
-import { prs, leaderboards } from "./data";
+import { prs } from "./data";
 
 function App() {
   /* State */
@@ -63,9 +62,6 @@ function App() {
         <Nav props={{ loggedIn, setLoggedIn }} />
 
         <Switch>
-          <PrivateRoute path='/leaderboards'>
-            <Leaderboards props={{ leaderboards }} />
-          </PrivateRoute>
           <PrivateRoute path='/edit-run'>
             <EditRun props={{ allRunsCopy, currentRun, setAllRuns, setAllRunsCopy }} />
           </PrivateRoute>

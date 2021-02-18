@@ -72,6 +72,7 @@ function Summary({
 
       <section style={{marginTop: "3em"}} className='summary-entries'>
         <h2>Run entries</h2>
+        
         <SummaryFilters props={{ handleFilter }} />
 
         {loggedRuns}

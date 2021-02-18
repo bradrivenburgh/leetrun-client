@@ -4,6 +4,20 @@
   margin: 0 1em; 
 }
 
+@media all and (min-width: 450px) {
+  .summary-entries {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media all and (min-width: 900px) {
+  .summary-entries {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
 .summary-stats {
   margin: 0 1em; 
 }

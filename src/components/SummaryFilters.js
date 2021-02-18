@@ -47,6 +47,7 @@ function SummaryFilters({ props: { handleFilter } }) {
             value={formData.location}
             onChange={(e) => handleChange(e)}
           />
+          <br />
           <label htmlFor='distance'>Distance:</label>
           <select
             name='distance'

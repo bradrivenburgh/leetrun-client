@@ -69,7 +69,6 @@ function Summary({
         {chartData 
         ? <Chart props={{chartData}} />
         : <p>Loading chart...</p>}
-        {/* <Chart props={{runFrequency}}/> */}
 
         <h3>Badges</h3>
         <div className='summary-stats__badges'>

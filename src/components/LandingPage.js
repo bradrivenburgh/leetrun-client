@@ -1,7 +1,24 @@
 import React from "react";
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import AuthApiService from '../services/auth-api-service';
 import "./LandingPage.css";
 
-function LandingPage() {
+function LandingPage({props: setLoggedIn}) {
+
+  const history = useHistory();
+
+  const handleLogin = () => {
+    AuthApiService.postLogin({
+      user_name: "BradR",
+      password: "Sn@pple123",
+    })
+    .then(response => {
+      setLoggedIn(true);
+      history.push('/summary');
+    });
+  }
+
   return (
     <>
       <header role='banner'>
@@ -9,19 +26,18 @@ function LandingPage() {
         <p>
           <strong>
             Track your runs. <br />
-            Share your achievements. <br />
+            View your progress. <br />
             Become elite.
           </strong>
         </p>
       </header>
       <div className='landing'>
         <section>
-          <h2>A better way to track and share your progress</h2>
+          <h2>A better way to track your running journey</h2>
           <p>
             Spreadsheets and running journals have their place for tracking
             progress, but LeetRun takes monitoring your progress to the next
-            level with dynamic summaries and stats tracking, as well as a
-            leaderboard to make it social.
+            level with dynamic summaries and stats tracking.
           </p>
         </section>
 
@@ -32,9 +48,9 @@ function LandingPage() {
             alt='record run form'
           />
           <p>
-            LeetRun allows you to all the details about your runs and races,
-            including location, distance, race information, terrain type,
-            weather conditions, completion time, and notes.
+            LeetRun lets you capture all the details about your runs,
+            including location, distance, surface type, terrain type, 
+            weather conditions, and personal notes.
           </p>
         </section>
 
@@ -45,28 +61,18 @@ function LandingPage() {
             alt='summary view'
           />
           <p>
-            View your PRs for common race distances, a chart of your run
-            frequency, badges for accomplishments, and sort and filter your all
-            your runs in once place.
+            View a chart of how often you run over time and filter your
+            runs based on a multitude of criteria.
           </p>
         </section>
 
-        <section>
-          <h2>Measure up against the competition</h2>
-          <img
-            src='https://placehold.it/600x300?text=leaderboards'
-            alt='leaderboard'
-          />
-          <p>
-            Make it social and see where your latest race PR lands you in the
-            rankings. LeetRun includes leaderboards that shows top times among
-            users for common race distances.
-          </p>
-        </section>
-
-        <section>
+        <section style={{textAlign: "center"}}>
           <h2>Start your running journey now</h2>
-          <button>View Demo</button>
+          <p>Enter the following credentials at the "Login" page</p>
+          <p><em>user: BradR<br/> password: Sn@pple123</em></p>
+          <p>OR</p>
+          <p>Login as the demo user with the following button:</p>
+          <button onClick={handleLogin}>Login as <br /> demo user</button>
         </section>
       </div>
       <footer>
@@ -84,6 +90,14 @@ function LandingPage() {
       </footer>
     </>
   );
+}
+
+LandingPage.defaultProps = {
+  setLoggedIn: () => {},
+}
+
+LandingPage.propTypes = {
+  setLoggedIn: PropTypes.func.isRequired
 }
 
 export default LandingPage;

@@ -87,7 +87,7 @@ function App() {
             <CreateAccount props={setLoggedIn} />
           </PublicOnlyRoute>
           <Route path='/'>
-            <LandingPage />
+            <LandingPage props={setLoggedIn} />
           </Route>
         </Switch>
       </BoundaryError>

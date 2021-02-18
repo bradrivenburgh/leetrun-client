@@ -12,7 +12,8 @@ const RunApiService = {
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : res.json()
-    );
+    )
+    .catch(error => console.error(error));
 },
 
   postRun(newRun) {
@@ -28,7 +29,8 @@ const RunApiService = {
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : res.json()
-    );
+    )
+    .catch(error => console.error(error));
   },
 
   patchRun(run_id, updatedRun) {
@@ -44,7 +46,8 @@ const RunApiService = {
       (!res.ok)
         ? res.json().then(e => Promise.reject(e))
         : null
-    );
+    )
+    .catch(error => console.error(error));
   },
 
   deleteRun(run_id) {
@@ -60,8 +63,7 @@ const RunApiService = {
         ? res.json().then(e => Promise.reject(e))
         : null
     )
-    .catch(error => console.log(error))
-
+    .catch(error => console.error(error));
   }
 }
 

@@ -8,7 +8,7 @@ import SummaryFilters from "./SummaryFilters";
 import "./Summary.css";
 
 function Summary({
-  props: { allRuns, prs, allRunsCopy, setAllRunsCopy, setAllRuns, setCurrentRun },
+  props: { allRuns, allRunsCopy, setAllRunsCopy, setAllRuns, setCurrentRun },
 }) {
 
   const [chartData, setChartData] = useState(null);
@@ -85,15 +85,6 @@ Summary.defaultProps = {
   props: {
     allRuns: [],
     allRunsCopy: [],
-    prs: {
-      "5k": "00:19:30",
-      "10k": "00:49:00",
-      "15k": "00:55:30",
-      "25k": "01:40:30",
-      "30k": "02:19:30",
-      "half-marathon": "01:49:30",
-      marathon: "03:40:30",
-    },
     setAllRuns: () => {},
     setAllRunsCopy: () => {},
     setCurrentRun: () => {},
@@ -104,7 +95,6 @@ Summary.propTypes = {
   props: PropTypes.shape({
     allRuns: PropTypes.array.isRequired,
     allRunsCopy:PropTypes.array.isRequired,
-    prs:PropTypes.object.isRequired,
     setAllRuns:PropTypes.func.isRequired,
     setCurrentRun:PropTypes.func.isRequired,
   })

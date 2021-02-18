@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import RunApiService from '../services/run-api-service';
 import "./RecordRun.css";
 
-function RecordRun({ props: { allRuns, setAllRuns } }) {
+function RecordRun({ props: { allRunsCopy, setAllRuns, setAllRunsCopy } }) {
   const [formData, setFormData] = useState({
     id: JSON.stringify(
       new Date() + Math.floor(Math.random() * Math.floor(100))
@@ -33,7 +33,8 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setAllRuns([...allRuns, formData]);
+    setAllRunsCopy([...allRunsCopy, formData])
+    setAllRuns([...allRunsCopy, formData]);
     RunApiService.postRun(formData)
     history.push("/summary");
   };
@@ -221,15 +222,17 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
 
 RecordRun.defaultProps = {
   props: {
-    allRuns: [],
+    allRunsCopy: [],
     setAllRuns: () => {},
+    setAllRunsCopy: () => {},
   },
 };
 
 RecordRun.propTypes = {
   props: PropTypes.shape({
-    allRuns: PropTypes.array.isRequired,
+    allRunsCopy: PropTypes.array.isRequired,
     setAllRuns: PropTypes.func.isRequired,
+    setAllRunsCopy: PropTypes.func.isRequired,
   })
 }
 

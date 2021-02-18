@@ -13,7 +13,6 @@ import PrivateRoute from "./Utils/PrivateRoute";
 import TokenService from "./services/token-service";
 import AuthApiService from "./services/auth-api-service";
 import IdleService from "./services/idle-service";
-import { prs } from "./data";
 
 function App() {
   /* State */
@@ -70,7 +69,6 @@ function App() {
               props={{
                 allRuns,
                 allRunsCopy,
-                prs,
                 setAllRuns,
                 setAllRunsCopy,
                 setCurrentRun,
@@ -78,7 +76,7 @@ function App() {
             />
           </PrivateRoute>
           <PrivateRoute path='/record-run'>
-            <RecordRun props={{ allRuns, setAllRuns }} />
+            <RecordRun props={{ allRunsCopy, setAllRuns, setAllRunsCopy }} />
           </PrivateRoute>
           <PublicOnlyRoute path='/login'>
             <Login props={setLoggedIn} />

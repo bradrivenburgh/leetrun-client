@@ -69,46 +69,6 @@ function Summary({
         {chartData 
         ? <Chart props={{chartData}} />
         : <p>Loading chart...</p>}
-
-        <h3>Badges</h3>
-        <div className='summary-stats__badges'>
-          <img
-            src='https://placehold.it/25x25?text=Badge'
-            alt='jogger'
-            title='jogger'
-          />
-          <img
-            src='https://placehold.it/25x25?text=Badge'
-            alt='runner'
-            title='runner'
-          />
-        </div>
-        <div className='summary-stats__pr'>
-          <h3>Personal Records</h3>
-          <ul>
-            <li>
-              <strong>5k:</strong> {prs["5k"]}
-            </li>
-            <li>
-              <strong>10k:</strong> {prs["10k"]}
-            </li>
-            <li>
-              <strong>15k:</strong> {prs["15k"]}
-            </li>
-            <li>
-              <strong>25k:</strong> {prs["25k"]}
-            </li>
-            <li>
-              <strong>30k:</strong> {prs["30k"]}
-            </li>
-            <li>
-              <strong>half-marathon:</strong> {prs["half-marathon"]}
-            </li>
-            <li>
-              <strong>marathon:</strong> {prs["marathon"]}
-            </li>
-          </ul>
-        </div>
       </section>
 
       <section className='summary-entries'>

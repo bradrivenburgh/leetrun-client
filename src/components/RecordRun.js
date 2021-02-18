@@ -203,17 +203,6 @@ function RecordRun({ props: { allRuns, setAllRuns } }) {
             onChange={(e) => handleChange(e)}
           />
 
-          <div className='record-run__share'>
-            <input
-              type='checkbox'
-              id='public'
-              name='public'
-              checked={formData.public}
-              onChange={(e) => handleChange(e)}
-            />
-            <label htmlFor='public'>Make public?</label>
-          </div>
-
           <div className='record-run__buttons'>
             <button type='button' onClick={() => history.goBack()}>
               Cancel

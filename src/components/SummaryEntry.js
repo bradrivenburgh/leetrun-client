@@ -82,9 +82,6 @@ function SummaryEntry({
         <p>
           <strong>Notes: </strong> {run.notes}
         </p>
-        <p>
-          <strong>Public: </strong> {run.public ? "yes" : "no"}
-        </p>
       </div>
       <div className='summary-entries__buttons'>
         <Link to='edit-run'>

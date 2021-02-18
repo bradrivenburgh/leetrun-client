@@ -22,6 +22,21 @@
   margin: 0 1em; 
 }
 
+@media all and (min-width: 768px) {
+  .summary-stats {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media all and (min-width: 900px) {
+  .summary-stats {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+
 .summary-stats h1, h2, h3 {
   text-align: center;
 }

@@ -49,20 +49,13 @@ function SummaryFilters({ props: { handleFilter } }) {
           />
           <br />
           <label htmlFor='distance'>Distance:</label>
-          <select
+          <input
+            type="number"
             name='distance'
             id='distance'
             value={formData.distance}
             onChange={(e) => handleChange(e)}>
-            <option value=''>--Distance--</option>
-            <option value='5'>5k</option>
-            <option value='10'>10k</option>
-            <option value='15'>15k</option>
-            <option value='25'>25k</option>
-            <option value='30'>30k</option>
-            <option value='half-marathon'>half-marathon</option>
-            <option value='marathon'>marathon</option>
-          </select>
+          </input>
           <br />
 
           <label htmlFor='weather'>Weather:</label>
@@ -104,14 +97,6 @@ function SummaryFilters({ props: { handleFilter } }) {
           </select>
           <br />
 
-          <label htmlFor='public'>Public</label>
-          <input
-            type='checkbox'
-            checked={formData.public}
-            name='public'
-            id='public'
-            onChange={(e) => handleChange(e)}
-          />
           <br />
           <button type='button' onClick={(e) => handleReset(e)}>
             Reset

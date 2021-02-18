@@ -87,7 +87,7 @@ function SummaryEntry({
         <Link to='edit-run'>
           <button onClick={() => setCurrentRun(run)}>Edit</button>
         </Link>
-        <button onClick={handleDelete}>Delete</button>
+        <button className="summary-entries__buttons-delete" onClick={handleDelete}>Delete</button>
       </div>
     </>
   );

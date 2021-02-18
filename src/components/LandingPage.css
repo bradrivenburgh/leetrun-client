@@ -1,7 +1,7 @@
 /* Landing page images */
 
 .landing {
-  margin: 10% 15%;
+  margin: 10% 20%;
 }
 
 @media screen and (max-width: 599px) {
@@ -28,6 +28,7 @@
 }
 
 .landing h1, h2 {
+  margin-top: 2em;
   text-align: center;
 }
 

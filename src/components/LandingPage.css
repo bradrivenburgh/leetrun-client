@@ -1,7 +1,7 @@
 /* Landing page images */
 
 .landing {
-  margin: 15%;
+  margin: 10% 15%;
 }
 
 @media screen and (max-width: 599px) {

@@ -6,6 +6,7 @@ class Chart extends React.Component {
   render() {
     const {props: {chartData}} = this.props
     console.log(chartData)
+
     return (
       <div>
         <Line

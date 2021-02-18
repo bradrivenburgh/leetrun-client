@@ -19,20 +19,14 @@ function Summary({
       .then((runs) => {
         setAllRuns(runs);
         setAllRunsCopy(runs);
-        if (allRunsCopy) {
-          return allRunsCopy;
-        }
-      })
-      .then(data => {
-        setChartData(runFrequency.addRunOccurrences(data))
       })
   }, []);
 
-  // useEffect(() => {
-  //   if (allRunsCopy) {
-  //     setChartData(runFrequency.addRunOccurrences(allRunsCopy))
-  //   }
-  // }, [allRunsCopy])
+  useEffect(() => {
+    if (allRunsCopy.length > 0) {
+      setChartData(runFrequency.addRunOccurrences(allRunsCopy))
+    }
+  }, [allRunsCopy])
 
   const loggedRuns = allRuns.map((run, key) => {
     return (

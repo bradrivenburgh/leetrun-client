@@ -59,14 +59,16 @@ function LandingPage({props: setLoggedIn}) {
 
         <section>
           <h2>Track your progress</h2>
-          <img
-            src={chartImage}
-            alt='summary view'
-          />
-          <img
-            src={filterAndEntry}
-            alt='summary view'
-          />
+          <div className="landing__flex-group">
+            <img
+              src={chartImage}
+              alt='summary view'
+            />
+            <img
+              src={filterAndEntry}
+              alt='summary view'
+            />
+          </div>
 
           <p>
             View a chart of how often you run over time and filter your

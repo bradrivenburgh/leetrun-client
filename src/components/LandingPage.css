@@ -66,3 +66,8 @@ footer {
   padding: 1% 0;
   background-color: #aaa;
 }
+
+footer a {
+  color: #000;
+  font-weight: bold;
+}

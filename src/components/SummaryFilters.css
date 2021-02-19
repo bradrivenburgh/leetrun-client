@@ -30,6 +30,14 @@
   padding: 1em;
 }
 
+@media all and (min-width: 500px) {
+  .summary-filters__filters {
+    margin: 1em auto;
+    width: 350px;
+  
+  }
+}
+
 .summary-filters__filters label {
   display: inline-block;
 }

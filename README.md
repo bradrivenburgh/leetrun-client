@@ -10,16 +10,20 @@ LeetRun is an application that allows users (runners) to record their runs and t
 ## Screenshots
 
 ### Landing screen
-![Landing screen](src/images/)
+![Landing screen](src/images/landing-page.png)
 
 ### Record your runs
 LeetRun lets you capture all the details about your runs, including location, distance, surface type, terrain type, weather conditions, and personal notes.
 
-![Landing screen](src/images/)
+![Run recording interface](src/images/run-recording-interface.png)
 
-### View your progress
+### Visualize your progress
 View a chart of how often you run over time and filter your runs based on a multitude of criteria.
-![Landing screen](src/images/)
+![Run frequency chart](src/images/track-your-progress1.png)
+
+### View your recorded runs
+View your runs ordered by the latest date, or filter through them as you please.
+![Run filters and entry](src/images/track-your-progress2.png)
 
 
 ## Technologies used

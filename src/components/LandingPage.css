@@ -1,7 +1,7 @@
 /* Landing page images */
 
 .landing {
-  margin: 10% 20%;
+  margin: 7% 20%;
 }
 
 @media screen and (max-width: 599px) {
@@ -33,6 +33,10 @@
 }
 
 @media screen and (min-width: 1024px) {
+  .landing {
+    margin: 7% 25%;
+  }
+
   .landing__flex-group {
     display: flex;
     justify-content: center;
@@ -44,9 +48,19 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .landing {
+    margin: 7% 30%;
+  }
+
   .landing img {
     max-height: 450px;
     max-width: 450px;
+  }
+}
+
+@media screen and (min-width: 2500px) {
+  .landing {
+    margin: 7% 35%;
   }
 }
 

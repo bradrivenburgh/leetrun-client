@@ -74,7 +74,7 @@ function CreateAccount({ props: setLoggedIn }) {
   return (
     <>
       <header>
-        <h1>Create an account</h1>
+        <h1>Sign-up</h1>
       </header>
       <section className='create-account'>
         <form

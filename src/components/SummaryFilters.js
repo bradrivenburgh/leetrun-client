@@ -53,6 +53,7 @@ function SummaryFilters({ props: { handleFilter } }) {
             type="number"
             name='distance'
             id='distance'
+            placeholder="enter a distance"
             value={formData.distance}
             onChange={(e) => handleChange(e)}>
           </input>

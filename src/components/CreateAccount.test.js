@@ -22,7 +22,7 @@ describe("CreateAccount", () => {
     screen.getByRole('heading');
   })
 
-  test("contains a form with required fields", () => {
+  test("contains a form with required input fields", () => {
     render(
       <BrowserRouter>
         <CreateAccount />
@@ -36,5 +36,15 @@ describe("CreateAccount", () => {
     screen.getByLabelText(/repeat/i);
   })
 
-  
+  test("contains 'Submit' and 'Cancel' buttons", () => {
+    render(
+      <BrowserRouter>
+        <CreateAccount />
+      </BrowserRouter>
+    );
+
+    screen.getByRole('button', {name: 'Submit'});
+    screen.getByRole('button', {name: 'Cancel'});
+  });
+
 });

@@ -47,4 +47,14 @@ describe("CreateAccount", () => {
     screen.getByRole('button', {name: 'Cancel'});
   });
 
+  test("checks to make sure Submit button is disabled while required fields are empty", () => {
+    render(
+      <BrowserRouter>
+        <CreateAccount />
+      </BrowserRouter>
+    );
+
+    expect(screen.getByRole('button', {name: 'Submit'})).toBeDisabled();
+  })
+
 });

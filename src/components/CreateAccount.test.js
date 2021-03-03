@@ -18,9 +18,9 @@ describe("CreateAccount", () => {
       </BrowserRouter>
     );
 
-    screen.getByText('Sign-up'); 
-    screen.getByRole('heading');
-  })
+    const heading = screen.getByRole("heading");
+    expect(heading).toHaveTextContent("Sign-up");
+  });
 
   test("contains a form with required input fields", () => {
     render(
@@ -28,13 +28,20 @@ describe("CreateAccount", () => {
         <CreateAccount />
       </BrowserRouter>
     );
+    
+    const labels = [
+      "User Name:",
+      "First Name:",
+      "Last Name:",
+      "Password:",
+      "Repeat Password:",
+    ];
 
-    screen.getByLabelText(/user name/i);
-    screen.getByLabelText(/first name/i);
-    screen.getByLabelText(/last name/i);
-    screen.getByLabelText("Password:");
-    screen.getByLabelText(/repeat/i);
-  })
+    labels.forEach(label => {
+      const element = screen.getByLabelText(`${label}`);
+      expect(element).toBeInTheDocument();
+    });
+  });
 
   test("contains 'Submit' and 'Cancel' buttons", () => {
     render(
@@ -43,8 +50,10 @@ describe("CreateAccount", () => {
       </BrowserRouter>
     );
 
-    screen.getByRole('button', {name: 'Submit'});
-    screen.getByRole('button', {name: 'Cancel'});
+    const submitBtn = screen.getByRole("button", { name: "Submit" });
+    const cancelBtn = screen.getByRole("button", { name: "Cancel" });
+    expect(submitBtn).toBeInTheDocument();
+    expect(cancelBtn).toBeInTheDocument();
   });
 
   test("checks to make sure Submit button is disabled while required fields are empty", () => {
@@ -54,7 +63,6 @@ describe("CreateAccount", () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByRole('button', {name: 'Submit'})).toBeDisabled();
-  })
-
+    expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
+  });
 });

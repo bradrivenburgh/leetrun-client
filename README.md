@@ -77,7 +77,7 @@ View your runs ordered by the latest date, or filter through them as you please.
 ## How to run
 - Clone the repository
 - Run `npm install` in the project directory to install the dependencies
-- Clone and setup [the API](https://github.com/bradrivenburgh/leetrun-server)
+- Clone and setup [the API](https://github.com/bradrivenburgh/leetrun-api)
 - Rename `example.env` to `.env` and replace the default values with your own.  These environmental variables will also need need to be configured on your deployed client (e.g., on Vercel).
 
 ## Available Scripts

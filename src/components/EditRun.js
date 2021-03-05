@@ -214,6 +214,7 @@ function EditRun({ props: { currentRun, allRunsCopy, setAllRuns, setAllRunsCopy 
               Cancel
             </button>
             <button
+              className={requiredValuesPresent() ? "disabled-button" : ""}
               disabled={requiredValuesPresent()}
               aria-disabled={requiredValuesPresent()}>
               Submit

@@ -56,6 +56,13 @@ button:active {
 	top:1px;
 }
 
+.disabled-button, 
+.disabled-button:hover {
+  background: gray;
+  background-color: none;
+}
+
+
 input, select {
   padding: 5px 10px 5px 10px;
   margin: 8px 0;

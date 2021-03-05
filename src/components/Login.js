@@ -84,6 +84,7 @@ function Login({props: setLoggedIn}) {
               Cancel
             </button>
             <button
+              className={allFormValuesPresent() ? "disabled-button" : ""}
               disabled={allFormValuesPresent()}
               aria-disabled={allFormValuesPresent()}>
               Submit

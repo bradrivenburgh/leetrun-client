@@ -1,15 +1,18 @@
-import { render } from '@testing-library/react';
-import BoundaryError from './BoundaryError';
-
+import { render } from "@testing-library/react";
+import BoundaryError from "./BoundaryError";
 
 const Child = () => {
-  throw new Error()
-}
+  throw new Error();
+};
 
-console.error = ""
+console.error = "";
 
-describe('Error Boundary', () => {
+describe("Error Boundary", () => {
   it(`should render error boundary`, () => {
-    render(<BoundaryError><Child /></BoundaryError>);
-  })
-})
+    render(
+      <BoundaryError>
+        <Child />
+      </BoundaryError>
+    );
+  });
+});

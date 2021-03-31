@@ -28,7 +28,7 @@ describe("CreateAccount", () => {
         <CreateAccount />
       </BrowserRouter>
     );
-    
+
     const labels = [
       "User Name:",
       "First Name:",
@@ -37,7 +37,7 @@ describe("CreateAccount", () => {
       "Repeat Password:",
     ];
 
-    labels.forEach(label => {
+    labels.forEach((label) => {
       const element = screen.getByLabelText(`${label}`);
       expect(element).toBeInTheDocument();
     });

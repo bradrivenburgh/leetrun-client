@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import AuthApiService from "../services/auth-api-service";
 import "./CreateAccount.css";
 
@@ -67,7 +67,7 @@ function CreateAccount({ props: setLoggedIn }) {
     const areEmptyInputs = Object.values(formData).some(
       (value) => value.trim().length === 0
     );
-    let valid = (!areEmptyInputs && validatePassword() ) ? false : true;
+    let valid = !areEmptyInputs && validatePassword() ? false : true;
     return valid;
   };
 
@@ -159,8 +159,7 @@ CreateAccount.defaultProps = {
 };
 
 CreateAccount.propTypes = {
-  setLoggedIn: PropTypes.func.isRequired
-}
-
+  setLoggedIn: PropTypes.func.isRequired,
+};
 
 export default CreateAccount;

@@ -1,26 +1,24 @@
 import React from "react";
-import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import AuthApiService from '../services/auth-api-service';
-import recordInterface from '../images/run-recording-interface.png'
-import chartImage from '../images/track-your-progress1.png'
-import filterAndEntry from '../images/track-your-progress2.png'
+import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
+import AuthApiService from "../services/auth-api-service";
+import recordInterface from "../images/run-recording-interface.png";
+import chartImage from "../images/track-your-progress1.png";
+import filterAndEntry from "../images/track-your-progress2.png";
 import "./LandingPage.css";
 
-function LandingPage({props: setLoggedIn}) {
-
+function LandingPage({ props: setLoggedIn }) {
   const history = useHistory();
 
   const handleLogin = () => {
     AuthApiService.postLogin({
       user_name: "BradR",
       password: "Sn@pple123",
-    })
-    .then(response => {
+    }).then((response) => {
       setLoggedIn(true);
-      history.push('/summary');
+      history.push("/summary");
     });
-  }
+  };
 
   return (
     <>
@@ -46,45 +44,44 @@ function LandingPage({props: setLoggedIn}) {
 
         <section>
           <h2>Record your runs</h2>
-          <img
-            src={recordInterface}
-            alt='record run form'
-          />
+          <img src={recordInterface} alt='record run form' />
           <p>
-            LeetRun lets you capture all the details about your runs,
-            including location, distance, surface type, terrain type, 
-            weather conditions, and personal notes.
+            LeetRun lets you capture all the details about your runs, including
+            location, distance, surface type, terrain type, weather conditions,
+            and personal notes.
           </p>
         </section>
 
         <section>
           <h2>Track your progress</h2>
-          <div className="landing__flex-group">
-            <img
-              src={chartImage}
-              alt='summary view'
-            />
-            <img
-              src={filterAndEntry}
-              alt='summary view'
-            />
+          <div className='landing__flex-group'>
+            <img src={chartImage} alt='summary view, chart' />
+            <img src={filterAndEntry} alt='summary view, filters' />
           </div>
 
           <p>
-            View a chart of how often you run over time and filter your
-            runs based on a multitude of criteria.
+            View a chart of how often you run over time and filter your runs
+            based on a multitude of criteria.
           </p>
         </section>
 
-        <section style={{textAlign: "center"}}>
+        <section style={{ textAlign: "center" }}>
           <h2>Start your running journey now</h2>
           <p>Enter the following credentials at the "Login" page</p>
-          <p><em>user: BradR<br/> password: Sn@pple123</em></p>
+          <p>
+            <em>
+              user: BradR
+              <br /> password: Sn@pple123
+            </em>
+          </p>
           <p>OR</p>
           <p>Login as the demo user with the following button:</p>
-          <button onClick={handleLogin}>Login as <br /> demo user</button>
+          <button onClick={handleLogin}>
+            Login as <br /> demo user
+          </button>
         </section>
       </div>
+
       <footer>
         <p>Created by Brad Rivenburgh</p>
         <p>
@@ -104,10 +101,10 @@ function LandingPage({props: setLoggedIn}) {
 
 LandingPage.defaultProps = {
   setLoggedIn: () => {},
-}
+};
 
 LandingPage.propTypes = {
-  setLoggedIn: PropTypes.func.isRequired
-}
+  setLoggedIn: PropTypes.func.isRequired,
+};
 
 export default LandingPage;

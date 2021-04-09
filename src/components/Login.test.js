@@ -29,17 +29,13 @@ describe("Login", () => {
       </BrowserRouter>
     );
 
-    const labels = [
-      "User Name:",
-      "Password:",
-    ];
+    const labels = ["User Name:", "Password:"];
 
     labels.forEach((label) => {
       const element = screen.getByLabelText(`${label}`);
       expect(element).toBeInTheDocument();
     });
   });
-
 
   test("contains 'Submit' and 'Cancel' buttons", () => {
     render(
@@ -63,5 +59,4 @@ describe("Login", () => {
 
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
   });
-
 });

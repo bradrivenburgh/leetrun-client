@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import PropTypes from 'prop-types';
-import AuthApiService from '../services/auth-api-service';
+import PropTypes from "prop-types";
+import AuthApiService from "../services/auth-api-service";
 import "./Login.css";
 
-function Login({props: setLoggedIn}) {
+function Login({ props: setLoggedIn }) {
   const [loginError, setLoginError] = useState(null);
   const [formData, setFormData] = useState({
     user_name: "",
@@ -34,22 +34,21 @@ function Login({props: setLoggedIn}) {
       user_name,
       password,
     })
-    .then(response => {
-      setFormData({
-        user_name: '',
-        password: '',        
+      .then((response) => {
+        setFormData({
+          user_name: "",
+          password: "",
+        });
+        setLoggedIn(true);
+        history.push("/summary");
+      })
+      .catch((response) => {
+        setLoginError(response.error);
       });
-      setLoggedIn(true);
-      history.push('/summary');
-    })
-    .catch(response => {
-      setLoginError(response.error)
-    })
-  }
- 
+  };
 
   return (
-    <>      
+    <>
       <header>
         <h1>Login</h1>
       </header>
@@ -58,8 +57,9 @@ function Login({props: setLoggedIn}) {
           action='#'
           className='login__form'
           onSubmit={(e) => handleSubmit(e)}>
-
-          {loginError && <p style={{color: "red", maxWidth: "160px"}}>{loginError}</p>}
+          {loginError && (
+            <p style={{ color: "red", maxWidth: "160px" }}>{loginError}</p>
+          )}
 
           <label htmlFor='user_name'>User Name:</label>
           <input
@@ -98,11 +98,10 @@ function Login({props: setLoggedIn}) {
 
 Login.defaultProps = {
   setLoggedIn: () => {},
-}
+};
 
 Login.propTypes = {
-  setLoggedIn: PropTypes.func.isRequired
-}
-
+  setLoggedIn: PropTypes.func.isRequired,
+};
 
 export default Login;

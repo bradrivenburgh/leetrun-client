@@ -84,6 +84,7 @@ function EditRun({ props: { currentRun, allRunsCopy, setAllRuns, setAllRunsCopy 
 
           <input
             type='date'
+            data-testid="date-picker"
             id='date'
             name='date'
             min='1950-01-01'

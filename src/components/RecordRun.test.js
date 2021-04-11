@@ -95,4 +95,52 @@ describe("RecordRun", () => {
     userEvent.type(distance, "5");
     expect(await screen.findByRole("button", { name: "Submit" })).toBeEnabled();
   });
+
+  test("Pressing 'Submit' calls setAllRuns and setAllRunsCopy", async () => {
+    const props = {
+      allRunsCopy: [],
+      currentRun: {
+        id: "1",
+        date: "",
+        location: "",
+        distance: "",
+        hours: "",
+        minutes: "",
+        seconds: "",
+        weather: "",
+        surface: "",
+        terrain: "",
+        notes: "",
+        public: false,
+      },
+      setAllRuns: jest.fn(),
+      setAllRunsCopy: jest.fn(),
+    };
+
+    render(
+      <BrowserRouter>
+        <RecordRun props={ props } />
+      </BrowserRouter>
+    );
+    const datePicker = screen.getByTestId("date-picker");
+    userEvent.clear(datePicker);
+    // Needs to be entered as yyyy-mm-dd
+    userEvent.type(datePicker, "2020-01-02");
+    const location = screen.getByRole("textbox", { name: /location/i });
+    userEvent.clear(location);
+    userEvent.type(location, "Philadelphia, PA");
+    const distance = screen.getByRole("spinbutton", {
+      name: /distance/i,
+    });
+    userEvent.clear(distance);
+    userEvent.type(distance, "5");
+
+    // Click Submit and expect state setters to have been called
+    const submitBtn = await screen.findByRole("button", { name: "Submit" });
+    userEvent.click(submitBtn);
+
+    expect(props.setAllRuns).toHaveBeenCalledTimes(1);
+    expect(props.setAllRunsCopy).toHaveBeenCalledTimes(1);
+  });
+
 });

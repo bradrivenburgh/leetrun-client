@@ -74,26 +74,25 @@ describe("RecordRun", () => {
     expect(screen.getByRole("button", { name: "Submit" })).toBeDisabled();
   });
 
-  // TODO: Fix test
-  test.skip("the Submit button is enabled when all required fields are completed", () => {
+  test("the 'Submit' button is enabled when all required fields are filled in", async () => {
     render(
       <BrowserRouter>
         <RecordRun />
       </BrowserRouter>
     );
 
-    const date = document.getElementById("date");
-    userEvent.click(date);
-    userEvent.clear(date)
-    userEvent.type(date, "04/09/2021");
-    console.log(document.getElementById("date").textContent)
+    const datePicker = screen.getByTestId("date-picker");
+    userEvent.clear(datePicker);
+    // Needs to be entered as yyyy-mm-dd
+    userEvent.type(datePicker, "2020-01-02");
     const location = screen.getByRole("textbox", { name: /location/i });
-    userEvent.click(location);
+    userEvent.clear(location);
     userEvent.type(location, "Philadelphia, PA");
-    const distance = screen.getByRole("spinbutton", { name: /distance/i });
-    userEvent.click(distance);
+    const distance = screen.getByRole("spinbutton", {
+      name: /distance/i,
+    });
+    userEvent.clear(distance);
     userEvent.type(distance, "5");
-
-    expect(screen.getByRole("button", { name: "Submit" })).toBeEnabled();
+    expect(await screen.findByRole("button", { name: "Submit" })).toBeEnabled();
   });
 });

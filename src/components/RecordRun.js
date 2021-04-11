@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import PropTypes from 'prop-types';
-import RunApiService from '../services/run-api-service';
+import PropTypes from "prop-types";
+import RunApiService from "../services/run-api-service";
 import "./RecordRun.css";
 
 function RecordRun({ props: { allRunsCopy, setAllRuns, setAllRunsCopy } }) {
@@ -33,9 +33,9 @@ function RecordRun({ props: { allRunsCopy, setAllRuns, setAllRunsCopy } }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setAllRunsCopy([...allRunsCopy, formData])
+    setAllRunsCopy([...allRunsCopy, formData]);
     setAllRuns([...allRunsCopy, formData]);
-    RunApiService.postRun(formData)
+    RunApiService.postRun(formData);
     history.push("/summary");
   };
 
@@ -76,11 +76,14 @@ function RecordRun({ props: { allRunsCopy, setAllRuns, setAllRunsCopy } }) {
           action='#'
           className='record-run__form'
           onSubmit={(e) => handleSubmit(e)}>
-          <p><em>(* = required)</em></p>
+          <p>
+            <em>(* = required)</em>
+          </p>
 
           <label htmlFor='date'>Date*:</label>
           <input
             type='date'
+            data-testid='date-picker'
             id='date'
             name='date'
             min='1950-01-01'
@@ -234,7 +237,7 @@ RecordRun.propTypes = {
     allRunsCopy: PropTypes.array.isRequired,
     setAllRuns: PropTypes.func.isRequired,
     setAllRunsCopy: PropTypes.func.isRequired,
-  })
-}
+  }),
+};
 
 export default RecordRun;

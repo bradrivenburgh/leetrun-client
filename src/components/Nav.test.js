@@ -1,6 +1,5 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { node } from "prop-types";
 
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./Nav";
